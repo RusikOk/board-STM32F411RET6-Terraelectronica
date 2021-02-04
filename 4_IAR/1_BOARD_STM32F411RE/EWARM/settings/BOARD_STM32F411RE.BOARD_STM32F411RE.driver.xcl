@@ -6,7 +6,7 @@
 
 "-p" 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\ST\STM32F411RE.ddf" 
+"C:\Program Files\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\ST\STM32F411RE.ddf" 
 
 "--drv_verify_download" 
 
@@ -21,6 +21,8 @@
 "--jlink_initial_speed=1000" 
 
 "--jlink_reset_strategy=0,0" 
+
+"--drv_interface=SWD" 
 
 "--drv_catch_exceptions=0x000" 
 

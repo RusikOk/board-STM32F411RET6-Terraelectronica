@@ -510,7 +510,7 @@ void StartTask03(void *argument)
 {
 	/* USER CODE BEGIN StartTask03 */
 	TickType_t xLastWakeTime;
-    const TickType_t xFrequency = 1 / portTICK_PERIOD_MS;
+    const TickType_t xFrequency = 50 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
 	
 	/* Infinite loop */
@@ -534,7 +534,7 @@ void StartTask04(void *argument)
 {
 	/* USER CODE BEGIN StartTask04 */
 	TickType_t xLastWakeTime;
-    const TickType_t xFrequency = 10 / portTICK_PERIOD_MS;
+    const TickType_t xFrequency = 100 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
 	
 	/* Infinite loop */
@@ -558,7 +558,7 @@ void StartTask05(void *argument)
 {
 	/* USER CODE BEGIN StartTask05 */
 	TickType_t xLastWakeTime;
-    const TickType_t xFrequency = 50 / portTICK_PERIOD_MS;
+    const TickType_t xFrequency = 500 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
 	
 	/* Infinite loop */

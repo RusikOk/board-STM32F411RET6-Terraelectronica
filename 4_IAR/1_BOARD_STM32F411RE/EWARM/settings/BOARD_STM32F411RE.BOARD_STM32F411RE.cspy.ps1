@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\RusikOk\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" --backend -f "D:\RusikOk\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" --debug_file=$debugfile --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\RusikOk\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" --debug_file=$debugfile --backend -f "D:\RusikOk\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
 }
