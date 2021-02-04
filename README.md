@@ -5,8 +5,8 @@
 + FPU<br>
 + 100 MHz<br>
 + ART Accelerator<br>
-+ USB Host
-- CAN<br>
++ + USB Host
+- - CAN<br>
 <br>
 <br>
 <br>
