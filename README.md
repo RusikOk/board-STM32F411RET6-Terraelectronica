@@ -3,13 +3,12 @@
 <br>
 
 <ul>
- <li>плюсы:</li>
  <li>+ DSP</li>
  <li>+ FPU</li>
  <li>+ 100 MHz</li>
  <li>+ ART Accelerator</li>
  <li>+ USB Host</li>
- <li>минусы:</li>
+
  <li>- CAN</li> 
 </ul>
 
