@@ -33,4 +33,11 @@ $RECYCLE.BIN/
 *.sim
 *.pbi.xcl
 *.pbd.tmp
+*.pbd.linf
+*.pbd.browse
 *.pbd
+*.pbi
+*.pbw
+*.out
+*.map
+*.o
