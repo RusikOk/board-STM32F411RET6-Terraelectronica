@@ -88,6 +88,9 @@ const osThreadAttr_t myTask50ms_attributes = {
 };
 /* USER CODE BEGIN PV */
 
+RTC_TimeTypeDef sTime = {0};
+RTC_DateTypeDef sDate = {0};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,7 +112,22 @@ void StartTask05(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int MyLowLevelPutchar(int x) // отправка байта в UART
+{
+  	HAL_UART_Transmit(&huart1, (uint8_t *)&x, 1, 0xFFFF);
+	return(x);
+}
 
+int MyLowLevelGetchar() // получение байта из UART
+{
+  	uint8_t x;
+	do
+	{
+	  	HAL_UART_Receive(&huart1, (uint8_t *)&x, 1, 0xFFFF);
+	} 
+	while(x == 0);
+	return((int)x);
+}
 /* USER CODE END 0 */
 
 /**
@@ -146,7 +164,9 @@ int main(void)
   MX_USART1_UART_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
-
+  
+	printf("\r\n (c) %s %s RusikOk \r\n", __DATE__, __TIME__);	 // приветствие
+	
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -197,7 +217,7 @@ int main(void)
 
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+  /* USER CODE BEGIN WHILE */ 
   while (1)
   {
     /* USER CODE END WHILE */
@@ -296,11 +316,11 @@ static void MX_RTC_Init(void)
 
   /* USER CODE END RTC_Init 0 */
 
-  RTC_TimeTypeDef sTime = {0};
-  RTC_DateTypeDef sDate = {0};
-
   /* USER CODE BEGIN RTC_Init 1 */
-
+  
+	if((*(__IO uint32_t *)RCC_BDCR_RTCEN_BB) == ENABLE) // если батарейка жива и часы идут
+		return; // то пропустим инициализачию часов нулями
+	
   /* USER CODE END RTC_Init 1 */
   /** Initialize RTC Only
   */

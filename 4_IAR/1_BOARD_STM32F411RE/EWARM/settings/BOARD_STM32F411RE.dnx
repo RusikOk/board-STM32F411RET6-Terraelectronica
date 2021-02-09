@@ -12,11 +12,15 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <StLinkDriver>
+        <stlinkserialNo>24552387</stlinkserialNo>
+        <stlinkfoundProbes />
+        <stlinkResetStyle>0</stlinkResetStyle>
+        <stlinkResetStrategy>1</stlinkResetStrategy>
         <CStepIntDis>_ 0</CStepIntDis>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>923340322</Checksum>
+        <Checksum>1639689830</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
@@ -53,11 +57,11 @@
     </JLinkDriver>
     <SWOTraceHWSettings>
         <OverrideDefaultClocks>0</OverrideDefaultClocks>
-        <CpuClock>100000000</CpuClock>
+        <CpuClock>96000000</CpuClock>
         <ClockAutoDetect>0</ClockAutoDetect>
         <ClockWanted>2000000</ClockWanted>
-        <JtagSpeed>2250000</JtagSpeed>
-        <Prescaler>44</Prescaler>
+        <JtagSpeed>2000000</JtagSpeed>
+        <Prescaler>48</Prescaler>
         <TimeStampPrescIndex>0</TimeStampPrescIndex>
         <TimeStampPrescData>0</TimeStampPrescData>
         <PcSampCYCTAP>1</PcSampCYCTAP>
@@ -73,6 +77,20 @@
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
     </Trace1>
+    <PowerLog>
+        <Title_0>I0</Title_0>
+        <Symbol_0>0 4 0</Symbol_0>
+        <LogEnabled>0</LogEnabled>
+        <GraphEnabled>0</GraphEnabled>
+        <ShowTimeLog>1</ShowTimeLog>
+        <LiveEnabled>0</LiveEnabled>
+        <LiveFile>PowerLogLive.log</LiveFile>
+    </PowerLog>
+    <PowerProbe>
+        <Frequency>10000</Frequency>
+        <Probe0>I0</Probe0>
+        <ProbeSetup0>2 1 1 2 0 0</ProbeSetup0>
+    </PowerProbe>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -87,15 +105,6 @@
         <EventLSU>0</EventLSU>
         <EventSLEEP>0</EventSLEEP>
     </SWOTraceWindow>
-    <PowerLog>
-        <Title_0>I0</Title_0>
-        <Symbol_0>0 4 0</Symbol_0>
-        <LogEnabled>0</LogEnabled>
-        <GraphEnabled>0</GraphEnabled>
-        <ShowTimeLog>1</ShowTimeLog>
-        <LiveEnabled>0</LiveEnabled>
-        <LiveFile>PowerLogLive.log</LiveFile>
-    </PowerLog>
     <DataLog>
         <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>
@@ -138,7 +147,7 @@
     </LogFile>
     <DriverProfiling>
         <Enabled>0</Enabled>
-        <Mode>1</Mode>
+        <Mode>3</Mode>
         <Graph>0</Graph>
         <Symbiont>0</Symbiont>
         <Exclusions />
@@ -149,11 +158,6 @@
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
-    <PowerProbe>
-        <Frequency>10000</Frequency>
-        <Probe0>I0</Probe0>
-        <ProbeSetup0>2 1 1 2 0 0</ProbeSetup0>
-    </PowerProbe>
     <DisassembleMode>
         <mode>0</mode>
     </DisassembleMode>
