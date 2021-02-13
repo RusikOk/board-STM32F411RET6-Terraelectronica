@@ -9,6 +9,8 @@
  <li>+ ART Accelerator</li>
  <li>+ USB Host</li>
 
+<br>
+
  <li>- CAN</li> 
 </ul>
 
