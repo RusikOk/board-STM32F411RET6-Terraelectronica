@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
-#include "keycodes.h" // определения кодов клавиш на клавиатуре
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,6 +32,11 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define KEY_ENTER	13
+#define KEY_RIGHT	68
+#define KEY_LEFT	67
+#define KEY_DOWN	66
+#define KEY_UP		65
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -42,9 +46,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
-
 TIM_HandleTypeDef htim3;
-
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
@@ -61,7 +63,8 @@ static void MX_RTC_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+void showMainMemu(); // главный экран
+void showSetDateMemu(); // меню установки даты
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -83,18 +86,43 @@ int MyLowLevelGetchar() // получение байта из UART в блоки
 	return((int)x);
 }
 
+#define CURSOR_START	23
+#define MENU_ITEM		6
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) // калбек по приему от UART
 {
+	static uint8_t cursorPos = CURSOR_START; // текущая позиция курсора на главном экране
+	
 	if(huart == &huart1)
 	{
+		// обрабатываем нажатия клавиш
 		switch(uartBuf[0])
 		{
 		case KEY_UP:
+			{
+				if(cursorPos > CURSOR_START) 
+					cursorPos--;
+			} break;
 		case KEY_DOWN:
-			
+			{
+				if(cursorPos < CURSOR_START + MENU_ITEM - 1)
+					cursorPos++;
+			} break;
+		case KEY_ENTER:
+			{
+				// запуск процедуры
+				/*switch(cursorPos - CURSOR_START)
+				{
+					case 0: showSetDateMemu(); break;
+				}*/
+			} break;
 		}
+		/*
+		printf("\x1B[%u;15H      ", cursorPos - 1); // подчистим артефакты
+		printf("\x1B[%u;15H      ", cursorPos + 1); // подчистим артефакты
+*/
+		printf("\x1B[%u;15H >>>>>", cursorPos); // вывод курсора главного меню
 		
-		printf("\x1B[20;55H %u", uartBuf[0]); // позиция курсора для даты
 		
 		HAL_UART_Receive_IT(&huart1, (uint8_t*)uartBuf, 1); // опять разрешаем прерывание по приему от UART, вызов колбека после получения каждого байта
 	}
@@ -162,9 +190,10 @@ void showMainMemu() // формируем главный экран в конс�
 	printf("\r\n\t╚════════════════════════════════════════════════════════╝");
 }
 
-void showSetDateMemu()
+void showSetDateMemu() // меню установки даты
 {
 	//
+	printf("------++++++++---------");
 }
 /* USER CODE END 0 */
 
