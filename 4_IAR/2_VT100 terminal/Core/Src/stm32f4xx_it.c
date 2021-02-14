@@ -43,9 +43,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-extern RTC_TimeTypeDef sTime;
-extern RTC_DateTypeDef sDate;
-extern RTC_AlarmTypeDef sAlarm;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -60,6 +58,7 @@ extern RTC_AlarmTypeDef sAlarm;
 
 /* External variables --------------------------------------------------------*/
 extern RTC_HandleTypeDef hrtc;
+extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -218,17 +217,6 @@ void SysTick_Handler(void)
 void RTC_WKUP_IRQHandler(void)
 {
   /* USER CODE BEGIN RTC_WKUP_IRQn 0 */
-	
-	// прочитаем DT из RTC
-	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-	HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
-	
-	printf("\x1B\0x7"); // сохраняем текущую позицию курсора, чтобы ничего ненарушить в основной программе
-	printf("\x1B[14;50H"); // позиция курсора для даты
-	printf("Date: 20%02u:%02u:%02u", sDate.Year, sDate.Month, sDate.Date);
-	printf("\x1B[16;50H"); // позиция курсора для вывода времени
-	printf("Time:   %02u:%02u:%02u", sTime.Hours, sTime.Minutes, sTime.Seconds);
-	printf("\x1B\0x8"); // восстанавливаем текущую позицию курсора
 
   /* USER CODE END RTC_WKUP_IRQn 0 */
   HAL_RTCEx_WakeUpTimerIRQHandler(&hrtc);
@@ -238,16 +226,25 @@ void RTC_WKUP_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles USART1 global interrupt.
+  */
+void USART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART1_IRQn 0 */
+
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+
+  /* USER CODE END USART1_IRQn 1 */
+}
+
+/**
   * @brief This function handles RTC alarms A and B interrupt through EXTI line 17.
   */
 void RTC_Alarm_IRQHandler(void)
 {
   /* USER CODE BEGIN RTC_Alarm_IRQn 0 */
-
-	
-	printf("alarm!!!!!!!!!!!!!! \r\n");
-	
-	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
 
   /* USER CODE END RTC_Alarm_IRQn 0 */
   HAL_RTC_AlarmIRQHandler(&hrtc);
