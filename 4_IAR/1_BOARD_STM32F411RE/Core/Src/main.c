@@ -217,7 +217,7 @@ int main(void)
 
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
-  /* USER CODE BEGIN WHILE */ 
+  /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
@@ -315,6 +315,9 @@ static void MX_RTC_Init(void)
   /* USER CODE BEGIN RTC_Init 0 */
 
   /* USER CODE END RTC_Init 0 */
+
+  RTC_TimeTypeDef sTime = {0};
+  RTC_DateTypeDef sDate = {0};
 
   /* USER CODE BEGIN RTC_Init 1 */
   
@@ -504,7 +507,7 @@ void StartDefaultTask(void *argument)
 /* USER CODE END Header_StartTask02 */
 void StartTask02(void *argument)
 {
-	/* USER CODE BEGIN StartTask02 */
+  /* USER CODE BEGIN StartTask02 */
 	TickType_t xLastWakeTime;
     const TickType_t xFrequency = 500 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
@@ -516,7 +519,7 @@ void StartTask02(void *argument)
 		
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
-	/* USER CODE END StartTask02 */
+  /* USER CODE END StartTask02 */
 }
 
 /* USER CODE BEGIN Header_StartTask03 */
@@ -528,7 +531,7 @@ void StartTask02(void *argument)
 /* USER CODE END Header_StartTask03 */
 void StartTask03(void *argument)
 {
-	/* USER CODE BEGIN StartTask03 */
+  /* USER CODE BEGIN StartTask03 */
 	TickType_t xLastWakeTime;
     const TickType_t xFrequency = 50 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
@@ -540,7 +543,7 @@ void StartTask03(void *argument)
 		
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
-	/* USER CODE END StartTask03 */
+  /* USER CODE END StartTask03 */
 }
 
 /* USER CODE BEGIN Header_StartTask04 */
@@ -552,7 +555,7 @@ void StartTask03(void *argument)
 /* USER CODE END Header_StartTask04 */
 void StartTask04(void *argument)
 {
-	/* USER CODE BEGIN StartTask04 */
+  /* USER CODE BEGIN StartTask04 */
 	TickType_t xLastWakeTime;
     const TickType_t xFrequency = 100 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
@@ -564,7 +567,7 @@ void StartTask04(void *argument)
 		
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
-	/* USER CODE END StartTask04 */
+  /* USER CODE END StartTask04 */
 }
 
 /* USER CODE BEGIN Header_StartTask05 */
@@ -576,7 +579,7 @@ void StartTask04(void *argument)
 /* USER CODE END Header_StartTask05 */
 void StartTask05(void *argument)
 {
-	/* USER CODE BEGIN StartTask05 */
+  /* USER CODE BEGIN StartTask05 */
 	TickType_t xLastWakeTime;
     const TickType_t xFrequency = 500 / portTICK_PERIOD_MS;
 	xLastWakeTime = xTaskGetTickCount();
@@ -588,7 +591,7 @@ void StartTask05(void *argument)
 		
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
-	/* USER CODE END StartTask05 */
+  /* USER CODE END StartTask05 */
 }
 
  /**

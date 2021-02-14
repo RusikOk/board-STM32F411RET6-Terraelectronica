@@ -9,17 +9,17 @@ CDefines=USE_HAL_DRIVER;STM32F411xE;USE_HAL_DRIVER;USE_HAL_DRIVER;
 [PreviousGenFiles]
 AdvancedFolderStructure=true
 HeaderFileListSize=3
-HeaderFiles#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Inc/stm32f4xx_it.h
-HeaderFiles#1=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Inc/stm32f4xx_hal_conf.h
-HeaderFiles#2=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Inc/main.h
+HeaderFiles#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Inc/stm32f4xx_it.h
+HeaderFiles#1=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Inc/stm32f4xx_hal_conf.h
+HeaderFiles#2=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Inc/main.h
 HeaderFolderListSize=1
-HeaderPath#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Inc
+HeaderPath#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Inc
 HeaderFiles=;
 SourceFileListSize=3
-SourceFiles#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Src/stm32f4xx_it.c
-SourceFiles#1=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Src/stm32f4xx_hal_msp.c
-SourceFiles#2=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Src/main.c
+SourceFiles#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Src/stm32f4xx_it.c
+SourceFiles#1=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Src/stm32f4xx_hal_msp.c
+SourceFiles#2=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Src/main.c
 SourceFolderListSize=1
-SourcePath#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2021-02-09 Okopny/Core/Src
+SourcePath#0=D:/work/–¿«–¿¡Œ“ »/board STM32F411RET6 Terraelectronica/4_IAR/2_VT100 terminal/Core/Src
 SourceFiles=;
 

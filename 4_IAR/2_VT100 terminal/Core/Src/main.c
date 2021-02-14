@@ -115,24 +115,51 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  	// http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html		- управляющие последовательности
+  	// https://www.commfront.com/pages/ascii-chart												- таблица ASCII
+  
   	printf("\x1Bс\x1B[2J\x1B[0;0H\x1B[0m"); // сброс всех настроек терминала, стирание экрана, установка курсора на 0 позицию, сброс всех атрибутов
-	// формируем рабочую область
+	// формируем рабочую область экрана
+	printf("\r\n\r\n\r\n\x1B[1;32m");
+	printf("\r\n\t\t ╔══╗ ╔═══╗╔══╗    ╔╗╔╗╔════╗ ╔╗╔══╗╔══╗");
+	printf("\r\n\t\t ║╔╗╚╗║╔══╝║╔═╝    ║║║║╚═╗╔═╝╔╝║║╔╗║║╔╗║");
+	printf("\r\n\t\t ║║╚╗║║╚══╗║║      ║║║║  ║║  ╚╗║║║║║║║║║");
+	printf("\r\n\t\t ║║ ║║║╔══╝║║      ║╚╝║  ║║   ║║║║║║║║║║");
+	printf("\r\n\t\t ║╚═╝║║╚══╗║╚═╗    ╚╗╔╝  ║║   ║║║╚╝║║╚╝║");
+	printf("\r\n\t\t ╚═══╝╚═══╝╚══╝     ╚╝   ╚╝   ╚╝╚══╝╚══╝");
+	printf("\r\n\r\n\x1B[0m");
+	printf("\r\n\t╔═══════════════════════════════════════╦════════════════╗");
+	printf("\r\n\t║\t\t\t\t\t║\t\t ║");
+	printf("\r\n\t║\t\x1B[1;33m (c) 2021-02-09 RusikOk \x1B[0m \t╟────────────────╢");
+	printf("\r\n\t║\t\t\t\t\t║\t\t ║");
+	printf("\r\n\t╠═══════════════════════════════════════╬════════════════╣");
+	printf("\r\n\t║\t\t\t\t\t║\t\t ║");
+	printf("\r\n\t║\t\t MENU\t\t\t║     STATE      ║");
+	printf("\r\n\t║\t\t\t\t\t║\t\t ║");
+	printf("\r\n\t╠═══════════════════════════════════════╬════════════════╣");
+	printf("\r\n\t║\t\t\t\t\t║\t\t ║");
+	printf("\r\n\t║\t\t Set Date \t\t║\t\t ║");
+	printf("\r\n\t║\t\t Set Time \t\t║\t\t ║");
+	printf("\r\n\t║\t\t Set Alarm Time ON \t║\t\t ║");
+	printf("\r\n\t║\t\t Set Alarm Time OFF \t║\t\t ║");
+	printf("\r\n\t║\t\t Parse string \t\t║\t\t ║");
+	printf("\r\n\t║\t\t Set PWM \t\t║\t\t ║");
+	printf("\r\n\t║\t\t\t\t\t║\t\t ║");
+	printf("\r\n\t╠═══════════════════════════════════════╩════════════════╣");
+	printf("\r\n\t║ Для перехода по пунктам меню используйте клавиши \t ║");
+	printf("\r\n\t║ управления курсором UP и DOWN. \t\t\t ║");
+	printf("\r\n\t║ Use the UP and DOWN cursor keys to navigate through \t ║");
+	printf("\r\n\t║ the menu items. \t\t\t\t\t ║");
+	printf("\r\n\t╚════════════════════════════════════════════════════════╝");
 	
-	printf("\r\n\r\n\t\xC9===============================================================\xBB");
-	printf("\r\n\t\xBA\t\t\t\t\t\t\t\t\xBA");
 	
-	printf("\r\n\t\xBA\t\t\t\t\t\t\t\t\xBA");
-	printf("\r\n\t\xBA\t\t\t\t\t\t\t\t\xBA");
-	printf("\r\n\t\xBA\t\t\t\t\t\t\t\t\xBA");
-	
-	
-	printf("\r\n\t\xC8===============================================================\xBC");
-	
-	
-  	printf("\r\n \x1B[1;5;33m (c) 2021-02-09 RusikOk \x1B[0m \r\n");	 // приветствие	
 	
   	htim3.Instance->CCR1 = 1000; // задаем начальное значение скважности 	
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // запускаем ШИМ
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // запускаем Ш�?М
+	
+	
+	
+
 	
   /* USER CODE END 2 */
 
@@ -140,17 +167,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-	HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
-	
-	printf("\x1B\0x7"); // сохраняем текущую позицию курсора, чтобы ничего ненарушить в основной программе
-	printf("\x1B[4;50H"); // позиция курсора для даты
-	printf("Date: 20%02u:%02u:%02u", sDate.Year, sDate.Month, sDate.Date);
-	printf("\x1B[5;50H"); // позиция курсора для вывода времени
-	printf("Time:   %02u:%02u:%02u", sTime.Hours, sTime.Minutes, sTime.Seconds);
-	printf("\x1B\0x8"); // восстанавливаем текущую позицию курсора
-	HAL_Delay(1000);
-	/* USER CODE END WHILE */
+
+	  //HAL_Delay(1000);
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
@@ -190,7 +209,8 @@ void SystemClock_Config(void)
   }
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -220,6 +240,7 @@ static void MX_RTC_Init(void)
 
   /* USER CODE END RTC_Init 0 */
 
+
   /* USER CODE BEGIN RTC_Init 1 */
 
   /* USER CODE END RTC_Init 1 */
@@ -238,6 +259,11 @@ static void MX_RTC_Init(void)
   }
 
   /* USER CODE BEGIN Check_RTC_BKUP */
+  
+  	if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != HAL_OK) // запускаем прерывание от RTC раз в секунду
+  	{
+    	Error_Handler();
+  	}
   
 	if((*(__IO uint32_t *)RCC_BDCR_RTCEN_BB) == ENABLE) // если батарейка жива и часы идут
 		return; // то пропустим инициализачию часов нулями
@@ -286,6 +312,12 @@ static void MX_RTC_Init(void)
   sAlarm.AlarmDateWeekDay = 1;
   sAlarm.Alarm = RTC_ALARM_B;
   if (HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Enable the WakeUp
+  */
+  if (HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != HAL_OK)
   {
     Error_Handler();
   }
