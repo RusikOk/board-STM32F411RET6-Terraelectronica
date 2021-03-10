@@ -37,7 +37,7 @@
 #define KEY_LEFT	67
 #define KEY_DOWN	66
 #define KEY_UP		65
-//курсор и меню...
+// курсор и меню...
 #define CURSOR_START	23
 #define MENU_ITEM		6
 /* USER CODE END PD */
@@ -71,6 +71,7 @@ static void MX_TIM3_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void showMainMemu(); // главный экран
+void showDialog(char *head, char *pattern); // формируем стандартный диалог
 void showSetDateMemu(); // меню установки даты
 void showSetTimeMemu(); // меню установки времени
 void showSetAlarmTimeONMemu(); // меню установки будильника на включение светодиода
@@ -141,7 +142,7 @@ void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc) // калбек
 	// выводим дату/время
 	printf("\x1B[s"); // сохраняем текущую позицию курсора, чтобы ничего ненарушить в основной программе
 	printf("\x1B[14;50H"); // позиция курсора для даты
-	printf("Date: 20%02u:%02u:%02u", sDate.Year, sDate.Month, sDate.Date);
+	printf("Date: 20%02u-%02u-%02u", sDate.Year, sDate.Month, sDate.Date);
 	printf("\x1B[16;50H"); // позиция курсора для вывода времени
 	printf("Time:   %02u:%02u:%02u", sTime.Hours, sTime.Minutes, sTime.Seconds);
 	printf("\x1B[u"); // восстанавливаем позицию курсора
@@ -202,6 +203,23 @@ void showMainMemu() // формируем главный экран в конс�
 	printf("\x1B[27;52H PWM: %u%", htim3.Instance->CCR1 / (65535 / 100)); // PWM
 }
 
+void showDialog(char *head, char *pattern) // формируем стандартный диалог
+{
+	uint8_t i = 20; // счетчик для удобной навигации по строкам
+	
+	// формируем рабочую область экрана
+	printf("\x1B[30;47m"); // изменим фон и пр.
+	printf("\x1B[%u;24H╔════════════════════╗", i++);
+	//printf("\x1B[%u;24H║                    ║", i++);
+	printf("\x1B[%u;%uH%s", i - 1, 24 + 22 / 2 - strlen(head) / 2, head);
+	//printf("\x1B[%u;24H╟────────────────────╢", i++);
+	printf("\x1B[%u;24H║                    ║", i++);
+	printf("\x1B[%u;%uH%s", i - 1, 24 + 22 / 2 - strlen(pattern) / 2, pattern);
+	printf("\x1B[%u;24H╚════════════════════╝", i++);
+	//printf("\t\t\t\t %s", head);
+	printf("\x1B[0m"); // сбрасываем все настройки
+}
+
 void showSetDateMemu() // меню установки даты
 {
 	echo = true; // включаем эхо
@@ -222,6 +240,10 @@ void showSetDateMemu() // меню установки даты
 	scanf("%u", &sDate1.Date);
 	if(sDate1.Date > 31)
 		sDate1.Date = 31;
+	
+	
+	// год не выставляется
+	
 	
 	/*
 	sDate1.Year = 15;
@@ -248,14 +270,16 @@ void showSetDateMemu() // меню установки даты
 void showSetTimeMemu() // меню установки времени
 {
 	echo = true; // включаем эхо
-	printf("showSetTimeMemu()");
+	showDialog("Set Time", "HH:MM:SS"); // формируем стандартный диалог
+	char d;
+	scanf("%c", &d);
 	echo = false; // выключаем эхо
 }
 
 void showSetAlarmTimeONMemu() // меню установки будильника на включение светодиода
 {
 	echo = true; // включаем эхо
-	printf("showSetAlarmTimeONMemu()");
+	printf("Set Alarm Time ON");
 	echo = false; // выключаем эхо
 }
 
