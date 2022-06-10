@@ -6,9 +6,9 @@
 
 <h2>2_VT100 terminal</h2>
 настройки COM порта 11200 8N1<br>
-
+<br>
 внешний вид<br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/0_out.jpg" alt="">
+<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/0_out.jpg" alt=""><br>
 настройки терминальной программы:<br>
 <img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/1_terminal.jpg" alt="">
 <img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/2_keyboard.jpg" alt="">
@@ -19,15 +19,15 @@
 <a href="http://vkontakte.doguran.ru/kak-pisat-simvolami.php">создать надпись из символов</a><br>
 
 <h2>3_freeRTOS</h2>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/0_plugin.jpg" alt="">
-для начала включаем плагин для отладки freeRTOS<br>
-<video><source src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/1_2022-06-10_tasks.mp4"></video>
+для начала включаем отладочный плагин freeRTOS в IAR<br>
+<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/0_plugin.jpg" alt=""><br>
 вывод отладочной информации на дисплей (старая реализация)<br>
+<iframe width="649" height="1153" src="https://www.youtube.com/embed/9KZm_4p_YK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
 ссылки:<br>
-<a href="">Андрей Курниц - FreeRTOS 1-9 части</a><br>
-<a href="">Андрей Курниц - FreeRTOS 10 часть</a><br>
-<a href="">datasheet SSD1306</a><br>
+<a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%9A%D1%83%D1%80%D0%BD%D0%B8%D1%86%20-%20FreeRTOS%201-9%20%D1%87%D0%B0%D1%81%D1%82%D0%B8.pdf">Андрей Курниц - FreeRTOS 1-9 части</a><br>
+<a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%9A%D1%83%D1%80%D0%BD%D0%B8%D1%86%20-%20FreeRTOS%2010%20%D1%87%D0%B0%D1%81%D1%82%D1%8C.pdf">Андрей Курниц - FreeRTOS 10 часть</a><br>
+<a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/SSD1306.pdf">datasheet SSD1306</a><br>
 <a href=""></a><br>
 
 <!-- h2></h2>
