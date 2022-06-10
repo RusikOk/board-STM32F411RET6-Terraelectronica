@@ -10,8 +10,8 @@
 внешний вид<br>
 <img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/0_out.jpg" alt=""><br>
 настройки терминальной программы:<br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/1_terminal.jpg" alt="">
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/2_keyboard.jpg" alt="">
+<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/1_terminal.jpg" alt=""><br>
+<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/2_keyboard.jpg" alt=""><br>
 <br>
 ссылки:<br>
 <a href="http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html">Управляющие кодовые последовательности терминала ANSI/VT100</a><br>
