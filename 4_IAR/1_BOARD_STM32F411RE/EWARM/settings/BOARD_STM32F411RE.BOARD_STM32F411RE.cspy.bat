@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.20\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" "--debug_file=%~1" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.20\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.general.xcl" "--debug_file=%~1" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\1_BOARD_STM32F411RE\EWARM\settings\BOARD_STM32F411RE.BOARD_STM32F411RE.driver.xcl" 
 
 @echo off 
 :end

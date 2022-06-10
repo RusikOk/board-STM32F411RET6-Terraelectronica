@@ -17,6 +17,17 @@
 <a href="http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html">Управляющие кодовые последовательности терминала ANSI/VT100</a><br>
 <a href="https://pixelplus.ru/samostoyatelno/stati/vnutrennie-faktory/tablica-simvolov-unicode.html">Таблица символов Юникода</a><br>
 <a href="http://vkontakte.doguran.ru/kak-pisat-simvolami.php">создать надпись из символов</a><br>
+
+<h2>3_freeRTOS</h2>
+<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/0_plugin.jpg" alt="">
+для начала включаем плагин для отладки freeRTOS<br>
+<video><source src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/1_2022-06-10_tasks.mp4"></video>
+вывод отладочной информации на дисплей (старая реализация)<br>
+<br>
+ссылки:<br>
+<a href="">Андрей Курниц - FreeRTOS 1-9 части</a><br>
+<a href="">Андрей Курниц - FreeRTOS 10 часть</a><br>
+<a href="">datasheet SSD1306</a><br>
 <a href=""></a><br>
 
 <!-- h2></h2>

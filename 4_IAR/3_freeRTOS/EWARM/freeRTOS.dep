@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>5</fileVersion>
+    <fileChecksum>917076825</fileChecksum>
+    <configuration>
+        <name>freeRTOS</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\RTT\SEGGER_RTT.c</file>
+            <file>$PROJ_DIR$\..\RTT\SEGGER_RTT_Conf.h</file>
+            <file>$PROJ_DIR$\..\SSD1306\fonts.h</file>
+            <file>$PROJ_DIR$\..\SSD1306\gfx_bw.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\freertos.c</file>
+            <file>$PROJ_DIR$\..\SSD1306\gfx_bw.h</file>
+            <file>$PROJ_DIR$\..\SSD1306\oled_ssd1306.h</file>
+            <file>$PROJ_DIR$\..\Core\Src\stm32f4xx_hal_msp.c</file>
+            <file>$PROJ_DIR$\..\RTT\SEGGER_RTT.h</file>
+            <file>$PROJ_DIR$\..\RTT\SEGGER_RTT_printf.c</file>
+            <file>$PROJ_DIR$\..\SSD1306\oled_ssd1306.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\main.c</file>
+            <file>$PROJ_DIR$\..\SSD1306\picture.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\main.h</file>
+            <file>$PROJ_DIR$\..\Core\Src\stm32f4xx_hal_timebase_tim.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\stm32f4xx_it.c</file>
+        </outputs>
+        <forcedrebuild>
+            <name>[REBUILD_ALL]</name>
+        </forcedrebuild>
+    </configuration>
+</project>

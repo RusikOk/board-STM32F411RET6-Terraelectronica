@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <fileVersion>4</fileVersion>
-    <fileChecksum>49470840</fileChecksum>
+    <fileVersion>5</fileVersion>
+    <fileChecksum>538909501</fileChecksum>
     <configuration>
         <name>red_maket</name>
         <outputs>
-            <file>$PROJ_DIR$\..\Src\stm32f1xx_it.c</file>
             <file>$PROJ_DIR$\..\Src\main.c</file>
             <file>$PROJ_DIR$\..\Src\fatfs.c</file>
             <file>$PROJ_DIR$\..\Src\stm32f1xx_hal_msp.c</file>
             <file>$PROJ_DIR$\..\Src\bsp_driver_sd.c</file>
+            <file>$PROJ_DIR$\..\Src\stm32f1xx_it.c</file>
         </outputs>
     </configuration>
 </project>

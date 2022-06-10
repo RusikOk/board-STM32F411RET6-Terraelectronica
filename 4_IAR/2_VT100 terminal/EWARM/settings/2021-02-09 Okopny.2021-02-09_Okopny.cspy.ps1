@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.20\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.general.xcl" --debug_file=$debugfile --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.20\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.general.xcl" --debug_file=$debugfile --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\2_VT100 terminal\EWARM\settings\2021-02-09 Okopny.2021-02-09_Okopny.driver.xcl" 
 }

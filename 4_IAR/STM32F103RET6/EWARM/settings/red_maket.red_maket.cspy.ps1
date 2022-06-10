@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.20\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.general.xcl" --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.general.xcl" --debug_file=$debugfile --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.20\common\bin\cspybat" -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.general.xcl" --debug_file=$debugfile --backend -f "D:\work\РАЗРАБОТКИ\board STM32F411RET6 Terraelectronica\4_IAR\STM32F103RET6\EWARM\settings\red_maket.red_maket.driver.xcl" 
 }

@@ -6,7 +6,7 @@
 
 "-p" 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\ST\STM32F103ZE.ddf" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.20\arm\CONFIG\debugger\ST\STM32F103ZE.ddf" 
 
 "--drv_verify_download" 
 
