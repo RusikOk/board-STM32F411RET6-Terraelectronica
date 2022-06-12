@@ -46,8 +46,8 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-										/* yастройки проэкта */
-#define displaySaverINTERVAL                            5 * 60 * 1000 / portTICK_RATE_MS /* выполнение раз в 5 минут */
+										/* настройки проэкта */
+#define displaySaverINTERVAL                            10 * 60 * 1000 / portTICK_RATE_MS /* выполнение раз в 5 минут */
         
 										/* мои определения и макросы */
 #define true                                            1
@@ -114,7 +114,6 @@ void Error_Handler(void);
 #define BTN1_GPIO_Port GPIOB
 #define BTN2_Pin GPIO_PIN_7
 #define BTN2_GPIO_Port GPIOB
-
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

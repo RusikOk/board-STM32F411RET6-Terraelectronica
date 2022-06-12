@@ -5,7 +5,7 @@
 <img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png" alt="">
 
 <h2>2_VT100 terminal</h2>
-настройки COM порта 11200 8N1<br>
+настройки COM порта 115200 8N1<br>
 <br>
 внешний вид<br>
 <img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/0_out.jpg" alt=""><br>
@@ -22,18 +22,15 @@
 для начала включаем отладочный плагин freeRTOS в IAR<br>
 <img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/0_plugin.jpg" alt=""><br>
 вывод отладочной информации на дисплей (старая реализация)<br>
-
-
-
 https://user-images.githubusercontent.com/65393007/173113990-68118f72-7dc7-4784-ab09-c65a8d762e3c.mp4
-
-
-
 <br>
 ссылки:<br>
 <a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%9A%D1%83%D1%80%D0%BD%D0%B8%D1%86%20-%20FreeRTOS%201-9%20%D1%87%D0%B0%D1%81%D1%82%D0%B8.pdf">Андрей Курниц - FreeRTOS 1-9 части</a><br>
 <a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%9A%D1%83%D1%80%D0%BD%D0%B8%D1%86%20-%20FreeRTOS%2010%20%D1%87%D0%B0%D1%81%D1%82%D1%8C.pdf">Андрей Курниц - FreeRTOS 10 часть</a><br>
 <a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/SSD1306.pdf">datasheet SSD1306</a><br>
+<a href="https://habr.com/ru/post/352782/">Отладка многопоточных программ на базе FreeRTOS</a><br>
+<a href="https://github.com/STMicroelectronics/STM32CubeF0/tree/master/Utilities/CPU">загрузка ЦП</a><br>
+<a href="https://percepio.com/iar/">Tracealyzer and IAR Embedded Workbench</a><br>
 <a href=""></a><br>
 
 <!-- h2></h2>

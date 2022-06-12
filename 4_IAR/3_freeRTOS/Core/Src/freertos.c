@@ -53,7 +53,23 @@ extern char vTaskListBuf[1024]; // буфер для диспетчера зад
 /* USER CODE END FunctionPrototypes */
 
 /* Hook prototypes */
+void configureTimerForRunTimeStats(void);
+unsigned long getRunTimeCounterValue(void);
 void vApplicationIdleHook(void);
+void vApplicationTickHook(void);
+
+/* USER CODE BEGIN 1 */
+/* Functions needed when configGENERATE_RUN_TIME_STATS is on */
+__weak void configureTimerForRunTimeStats(void)
+{
+
+}
+
+__weak unsigned long getRunTimeCounterValue(void)
+{
+return 0;
+}
+/* USER CODE END 1 */
 
 /* USER CODE BEGIN 2 */
 void vApplicationIdleHook( void )
@@ -67,7 +83,8 @@ void vApplicationIdleHook( void )
    important that vApplicationIdleHook() is permitted to return to its calling
    function, because it is the responsibility of the idle task to clean up
    memory allocated by the kernel to any task that has since been deleted. */
-        LED4_TOG(); // моргаем светодиодом
+        //LED4_TOG(); // моргаем светодиодом
+        LED4_OFF();
         //xPortGetFreeHeapSize(); // объем доступной для выделения свободной памяти кучи. доступно для heap_1 и heap_2
         //vTaskGetRunTimeStats(vTaskListBuf);
         vTaskList(vTaskListBuf); // получаем список потоков OS
@@ -75,6 +92,18 @@ void vApplicationIdleHook( void )
 
 }
 /* USER CODE END 2 */
+
+/* USER CODE BEGIN 3 */
+void vApplicationTickHook( void )
+{
+   /* This function will be called by each tick interrupt if
+   configUSE_TICK_HOOK is set to 1 in FreeRTOSConfig.h. User code can be
+   added here, but the tick hook is called from an interrupt context, so
+   code must not attempt to block, and only the interrupt safe FreeRTOS API
+   functions can be used (those that end in FromISR()). */
+        LED4_ON();
+}
+/* USER CODE END 3 */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */

@@ -611,6 +611,14 @@ void StartTaskDisplay(void *argument)
                         GFX_DrawString(0, 40, vTaskListBuf+133, WHITE, BLACK);
                         GFX_DrawString(0, 48, vTaskListBuf+160, WHITE, BLACK);
                         SSD1306_Display();
+                        break;
+                case 7:
+                        // простая надпись
+                        SSD1306_Clear(BLACK);
+                        GFX_DrawString(0, 8, "CPU usage: ", WHITE, BLACK);
+                        //osGetCPUUsage
+                        
+                        SSD1306_Display();
                         
                         // сбрасываем счетчик нажатий кнопки для новой итерации перебора пунктов меню
                         btnCounter = 0;   
@@ -638,7 +646,7 @@ void tmrMinutes(void *argument)
 		sendData = true; // устанавливаем флаг отправки данных на сервер
 	if((sTime.Hours == 4) && (sTime.Minutes == 45))
                 devStat(); // отправляем на сервер данные статистики наработки прибора
-	if(((sTime.Hours % 1) == 0) && ((sTime.Minutes % 5) == 0) && (sTime.Seconds == 0)) // каждые 5 минут
+	if(((sTime.Hours % 1) == 0) && ((sTime.Minutes % 5) == 0)) // каждые 5 минут
 	  	if(mode == MODE_WIFI)
 	  		csq = esp_csq(ssid); // запрашиваем у модуля уровень сигнала*/
   /* USER CODE END tmrMinutes */
@@ -670,7 +678,8 @@ void tmrBtnScan(void *argument)
         else if(tick > 0)
         {
                 osTimerStart(myTimerDisplaySaverHandle, displaySaverINTERVAL); // сбрасываем таймер, xTimerReset не завезли(
-                xQueueSend(myQueueBtnHandle, &tick, 0); // отправляем в очередь время нажатия кнопки
+                //xQueueSend(myQueueBtnHandle, &tick, 0); // отправляем в очередь время нажатия кнопки
+                osMessageQueuePut(myQueueBtnHandle, &tick, NULL, 0); // отправляем в очередь время нажатия кнопки
                 tick = 0; // сбрасываем счетчик
         }
   /* USER CODE END tmrBtnScan */
