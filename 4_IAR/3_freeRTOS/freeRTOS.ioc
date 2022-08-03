@@ -2,7 +2,7 @@
 FREERTOS.FootprintOK=true
 FREERTOS.INCLUDE_vTaskDelete=1
 FREERTOS.IPParameters=Tasks01,FootprintOK,configENABLE_FPU,configUSE_IDLE_HOOK,INCLUDE_vTaskDelete,configUSE_STATS_FORMATTING_FUNCTIONS,Timers01,Queues01,configUSE_TICK_HOOK,configGENERATE_RUN_TIME_STATS
-FREERTOS.Queues01=myQueueBtn,5,uint8_t,0,Dynamic,NULL,NULL
+FREERTOS.Queues01=myQueueBtn,8,uint8_t,0,Dynamic,NULL,NULL
 FREERTOS.Tasks01=defaultTask,24,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;myTaskLed500,16,128,StartTaskLed500,Default,NULL,Dynamic,NULL,NULL;myTaskLed250,16,128,StartTaskLed250,Default,NULL,Dynamic,NULL,NULL;myTaskLed100,16,128,StartTaskLed100,Default,NULL,Dynamic,NULL,NULL;myTaskDisplay,16,128,StartTaskDisplay,Default,NULL,Dynamic,NULL,NULL
 FREERTOS.Timers01=myTimerMinutes,tmrMinutes,osTimerPeriodic,Default,NULL,Dynamic,NULL;myTimerDisplaySaver,tmrDisplaySaver,osTimerPeriodic,Default,NULL,Dynamic,NULL;myTimerBtnScan,tmrBtnScan,osTimerPeriodic,Default,NULL,Dynamic,NULL
 FREERTOS.configENABLE_FPU=1

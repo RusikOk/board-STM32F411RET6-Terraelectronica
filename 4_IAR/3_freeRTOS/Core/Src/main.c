@@ -241,7 +241,7 @@ int main(void)
 
   /* Create the queue(s) */
   /* creation of myQueueBtn */
-  myQueueBtnHandle = osMessageQueueNew (5, sizeof(uint8_t), &myQueueBtn_attributes);
+  myQueueBtnHandle = osMessageQueueNew (8, sizeof(uint8_t), &myQueueBtn_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
