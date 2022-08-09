@@ -22,7 +22,7 @@
 #define SSD1306_I2C_CONTROL
 
 #ifdef SSD1306_I2C_CONTROL
-//#define SSD1306_I2C_DMA_ENABLE // rusikok
+#define SSD1306_I2C_DMA_ENABLE
 #define SSD1306_I2C_ADDRESS   0x78
 #endif
 
