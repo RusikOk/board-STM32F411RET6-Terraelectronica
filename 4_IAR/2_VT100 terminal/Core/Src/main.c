@@ -44,7 +44,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define cursorPrint(x) printf("\x1B[%u;15H       \x1B[%u;15H       \x1B[%u;15H >>>>>>", x + 1, x - 1, x) /* вывод курсора главного меню */
+#define CURSOR_PRINT(x) printf("\x1B[%u;15H       \x1B[%u;15H       \x1B[%u;15H >>>>>>", x + 1, x - 1, x) /* вывод курсора главного меню */
 
 /* USER CODE END PM */
 
@@ -111,23 +111,18 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) // калбек по п�
 		switch(uartBuf[0])
 		{
 		case KEY_UP:
-			{
-				if(cursorPos > CURSOR_START) 
-					cursorPos--;
-			} break;
+			if(cursorPos > CURSOR_START) cursorPos--;
+			break;
 		case KEY_DOWN:
-			{
-				if(cursorPos < CURSOR_START + MENU_ITEM - 1)
-					cursorPos++;
-			} break;
+			if(cursorPos < CURSOR_START + MENU_ITEM - 1) cursorPos++;
+			break;
 		case KEY_ENTER:
-			{
-				menu = cursorPos - CURSOR_START + 1; // говорим основной программе какой пункт меню выбран
-			} break;
+			menu = cursorPos - CURSOR_START + 1; // говорим основной программе какой пункт меню выбран
+			break;
 		}
 
 		if(uartBuf[0] != 0x1B) // двигаем курсор только при получении кода клавиши, пропустив начало управляющей последовательности 0x1B
-			cursorPrint(cursorPos); // вывод курсора главного меню
+			CURSOR_PRINT(cursorPos); // вывод курсора главного меню
 		
 		HAL_UART_Receive_IT(&huart1, (uint8_t*)uartBuf, 1); // опять разрешаем прерывание по приему от UART, вызов колбека после получения каждого байта
 	}
@@ -152,13 +147,19 @@ void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc) // калбек
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) // калбек от будильника(ов)
 {
-	printf("alarm!!!!!!!!!!!!!! \r\n");	
-	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET); // on
+	showMainMemu(); // перерисуем интерфейс, чтобы обновился статус светодиода
+}
+
+void HAL_RTC_AlarmBEventCallback(RTC_HandleTypeDef *hrtc) // калбек от будильника(ов)
+{
+	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin); // off !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	showMainMemu(); // перерисуем интерфейс, чтобы обновился статус светодиода
 }
 
 void showMainMemu() // формируем главный экран в консоли
 {
-  	// http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html			- управляющие последовательности
+  	// http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html		- управляющие последовательности
   	// https://pixelplus.ru/samostoyatelno/stati/vnutrennie-faktory/tablica-simvolov-unicode.html	- таблица символов UTF-8
   
   	// сброс всех настроек терминала, стирание экрана, установка курсора на 0 позицию, сброс всех атрибутов
@@ -198,7 +199,7 @@ void showMainMemu() // формируем главный экран в конс�
 	printf("\r\n\t╚════════════════════════════════════════════════════════╝");
 	
 	// вывод курсора главного меню
-	cursorPrint(cursorPos); 
+	CURSOR_PRINT(cursorPos); 
 	
 	// выводим состояние переменных
 	printf("\x1B[24;52H LED1: %s", GPIO_PIN_SET == HAL_GPIO_ReadPin(LED1_GPIO_Port, LED1_Pin) ? "\x1B[41mON\x1B[0m" : "OFF"); // LED1
@@ -224,71 +225,125 @@ void showDialog(char *head, char *pattern) // формируем стандар�
 
 void showSetDateMemu() // меню установки даты
 {
+	uint8_t tmp;
 	echo = true; // включаем эхо
-	RTC_DateTypeDef sDate1 = {0}; // локальная переменная только для установки даты
+	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc); // останавливаем прерывание от RTC раз в секунду
 	
 	printf("\x1B[50;0H");
-	printf("введи год YY: ");
-	scanf("%u", &sDate1.Year);
-	if(sDate1.Year > 99) // контроль входных значний
-		sDate1.Year = 99;
+	printf("введите год YY: ");
+	scanf("%u", &tmp);
 	
 	printf("введи месяц MM: ");
-	scanf("%u", &sDate1.Month);
-	if(sDate1.Month > 12)
-		sDate1.Month = 12;
+	scanf("%u", &sDate.Month);
+	if(sDate.Month > 12)
+		sDate.Month = 12;
 	
-	printf("введи номер дня DD: ");
-	scanf("%u", &sDate1.Date);
-	if(sDate1.Date > 31)
-		sDate1.Date = 31;
+	printf("введите номер дня DD: ");
+	scanf("%u", &sDate.Date);
+	if(sDate.Date > 31)
+		sDate.Date = 31;
 	
+	if(tmp < 99) // контроль входных значний
+		sDate.Year = tmp;
 	
-	// год не выставляется
-	
-	
-	/*
-	sDate1.Year = 15;
-	sDate1.Month = 5;
-	sDate1.Date = 24;
-	*/
-	HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
 	// собственно установка новой даты
-	if (HAL_RTC_SetDate(&hrtc, &sDate1, RTC_FORMAT_BIN) != HAL_OK)
-	{
-    	Error_Handler();
-	}
-	/*
-	  sTime.Hours = 0;
-  sTime.Minutes = 0;
-  sTime.Seconds = 0;
-  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
-  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  if(HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)*/
+	HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
 	
+	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS); // запускаем прерывание от RTC раз в секунду
 	echo = false; // выключаем эхо
 }
 
 void showSetTimeMemu() // меню установки времени
 {
 	echo = true; // включаем эхо
-	showDialog("Set Time", "HH:MM:SS"); // формируем стандартный диалог
-	char d;
-	scanf("%c", &d);
+	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc); // останавливаем прерывание от RTC раз в секунду
+	
+	printf("\x1B[50;0H");
+	printf("введите часы HH: ");
+	scanf("%u", &sTime.Hours);
+	if(sTime.Hours > 23)
+		sTime.Hours = 23;
+	
+	printf("введите минуты MM: ");
+	scanf("%u", &sTime.Minutes);
+	if(sTime.Minutes > 60)
+		sTime.Minutes = 60;
+	
+	sTime.Seconds = 0;
+	sTime.SubSeconds = 0;
+	HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+	
+	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS); // запускаем прерывание от RTC раз в секунду
 	echo = false; // выключаем эхо
 }
 
 void showSetAlarmTimeONMemu() // меню установки будильника на включение светодиода
 {
 	echo = true; // включаем эхо
-	printf("Set Alarm Time ON");
+	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc); // останавливаем прерывание от RTC раз в секунду
+	
+	printf("\x1B[50;0H");
+	printf("введите часы HH: ");
+	scanf("%u", &sAlarm.AlarmTime.Hours);
+	if(sTime.Hours > 23)
+		sTime.Hours = 23;
+	
+	printf("введите минуты MM: ");
+	scanf("%u", &sAlarm.AlarmTime.Minutes);
+	if(sTime.Minutes > 60)
+		sTime.Minutes = 60;
+
+	sAlarm.AlarmTime.Seconds = 0;
+	sAlarm.AlarmTime.SubSeconds = 0;
+	sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+	sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
+	sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
+	sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+	sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
+	sAlarm.AlarmDateWeekDay = 1;
+	sAlarm.Alarm = RTC_ALARM_A;
+	
+	HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN);
+	
+	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS); // запускаем прерывание от RTC раз в секунду
 	echo = false; // выключаем эхо
 }
 
 void showSetAlarmTimeOFFMemu() // меню установки будильника на выключение светодиода
 {
 	echo = true; // включаем эхо
-	printf("showSetAlarmTimeOFFMemu()");
+	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc); // останавливаем прерывание от RTC раз в секунду
+	
+	printf("\x1B[50;0H");
+	printf("введите часы HH: ");
+	scanf("%u", &sAlarm.AlarmTime.Hours);
+	if(sTime.Hours > 23)
+		sTime.Hours = 23;
+	
+	printf("введите минуты MM: ");
+	scanf("%u", &sAlarm.AlarmTime.Minutes);
+	if(sTime.Minutes > 60)
+		sTime.Minutes = 60;
+
+	sAlarm.AlarmTime.Seconds = 0;
+	sAlarm.AlarmTime.SubSeconds = 0;
+	sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+	sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
+	sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
+	sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+	sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
+	sAlarm.AlarmDateWeekDay = 1;
+	sAlarm.Alarm = RTC_ALARM_B;
+	
+	HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN);
+	
+	
+	
+	
+// TODO: не срабатывает второй будильник!
+	
+	
+	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS); // запускаем прерывание от RTC раз в секунду
 	echo = false; // выключаем эхо
 }
 
@@ -303,7 +358,7 @@ void showSetPWMMemu() // меню установки будильника на �
 {
 	echo = true; // включаем эхо
 	printf("\x1B[50;0H");
-	printf("введи процент скважности ШИМ (0 - 100): ");
+	printf("введите процент скважности ШИМ (0 - 100): ");
 	uint8_t pwm;
 	scanf("%u", &pwm);
 	if(pwm > 100) // контроль входных значний
@@ -348,8 +403,8 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  	htim3.Instance->CCR1 = 1000; // задаем начальное значение скважности Ш�?М	
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // запускаем Ш�?М
+  	htim3.Instance->CCR1 = 1000; // задаем начальное значение скважности ШИМ	
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // запускаем ШИМ
 	
 	HAL_UART_Receive_IT(&huart1, (uint8_t*)uartBuf, 1); // разрешаем прерывание по приему от UART, вызов колбека после получения каждого байта
 	
@@ -369,12 +424,12 @@ int main(void)
 		// выполнение процедуры ввода данных
 		switch(menu) // похоже со структурой я перемудрил. нужно было просто объявить глобальную переменную
 		{
-			case 1: showSetDateMemu(); 			break; // меню установки даты
-			case 2: showSetTimeMemu(); 			break; // меню установки времени
+			case 1: showSetDateMemu(); 		break; // меню установки даты
+			case 2: showSetTimeMemu(); 		break; // меню установки времени
 			case 3: showSetAlarmTimeONMemu(); 	break; // меню установки будильника на включение светодиода
 			case 4: showSetAlarmTimeOFFMemu(); 	break; // меню установки будильника на выключение светодиода
 			case 5: showParseStringMemu(); 		break; // меню парсинга
-			case 6: showSetPWMMemu(); 			break; // меню установки будильника на включение светодиода	
+			case 6: showSetPWMMemu(); 		break; // меню установки будильника на включение светодиода	
 		}
 		menu = 0; // сбрасываем флаг
 					
@@ -475,9 +530,7 @@ static void MX_RTC_Init(void)
   /* USER CODE BEGIN Check_RTC_BKUP */
   
   	if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != HAL_OK) // запускаем прерывание от RTC раз в секунду
-  	{
-    	Error_Handler();
-  	}
+		Error_Handler();
   
 	if((*(__IO uint32_t *)RCC_BDCR_RTCEN_BB) == ENABLE) // если батарейка жива и часы идут
 		return; // то пропустим инициализачию часов нулями
@@ -513,7 +566,7 @@ static void MX_RTC_Init(void)
   sAlarm.AlarmTime.SubSeconds = 0;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  sAlarm.AlarmMask = RTC_ALARMMASK_NONE;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
