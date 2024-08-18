@@ -145,15 +145,15 @@ void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc) // калбек
 	printf("\x1B[u"); // восстанавливаем позицию курсора
 }
 
-void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) // калбек от будильника(ов)
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) // калбек будильника A
 {
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET); // on
 	showMainMemu(); // перерисуем интерфейс, чтобы обновился статус светодиода
 }
 
-void HAL_RTC_AlarmBEventCallback(RTC_HandleTypeDef *hrtc) // калбек от будильника(ов)
+void HAL_RTCEx_AlarmBEventCallback(RTC_HandleTypeDef *hrtc)  // калбек будильника B
 {
-	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin); // off !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET); // off
 	showMainMemu(); // перерисуем интерфейс, чтобы обновился статус светодиода
 }
 
@@ -336,12 +336,6 @@ void showSetAlarmTimeOFFMemu() // меню установки будильник
 	sAlarm.Alarm = RTC_ALARM_B;
 	
 	HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN);
-	
-	
-	
-	
-// TODO: не срабатывает второй будильник!
-	
 	
 	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS); // запускаем прерывание от RTC раз в секунду
 	echo = false; // выключаем эхо
