@@ -505,10 +505,6 @@ static void MX_RTC_Init(void)
 
   /* USER CODE END RTC_Init 0 */
 
-  RTC_TimeTypeDef sTime = {0};
-  RTC_DateTypeDef sDate = {0};
-  RTC_AlarmTypeDef sAlarm = {0};
-
   /* USER CODE BEGIN RTC_Init 1 */
 
   /* USER CODE END RTC_Init 1 */
@@ -529,10 +525,10 @@ static void MX_RTC_Init(void)
 
   /* USER CODE BEGIN Check_RTC_BKUP */
   
-  	if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != HAL_OK) // запускаем прерывание от RTC раз в секунду
+  	if(HAL_OK != HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0, RTC_WAKEUPCLOCK_CK_SPRE_16BITS)) // запускаем прерывание от RTC раз в секунду
 		Error_Handler();
   
-	if((*(__IO uint32_t *)RCC_BDCR_RTCEN_BB) == ENABLE) // если батарейка жива и часы идут
+	if(ENABLE == (*(__IO uint32_t *)RCC_BDCR_RTCEN_BB)) // если батарейка жива и часы идут
 		return; // то пропустим инициализачию часов нулями
   
   /* USER CODE END Check_RTC_BKUP */
