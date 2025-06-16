@@ -1481,10 +1481,19 @@
                     <name>$PROJ_DIR$\..\Core\Src\freertos.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\FreeRTOSConfig.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\main.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\main.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\read.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\stm32f4xx_hal_conf.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\stm32f4xx_hal_msp.c</name>
@@ -1494,6 +1503,9 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\stm32f4xx_it.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\stm32f4xx_it.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\write.c</name>
@@ -1519,6 +1531,21 @@
                         <name>$PROJ_DIR$\..\FATFS\Target\sd_diskio.c</name>
                     </file>
                 </group>
+            </group>
+            <group>
+                <name>RTT</name>
+                <file>
+                    <name>$PROJ_DIR$\..\RTT\SEGGER_RTT.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\RTT\SEGGER_RTT.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\RTT\SEGGER_RTT_Conf.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\RTT\SEGGER_RTT_printf.c</name>
+                </file>
             </group>
             <group>
                 <name>USB_DEVICE</name>

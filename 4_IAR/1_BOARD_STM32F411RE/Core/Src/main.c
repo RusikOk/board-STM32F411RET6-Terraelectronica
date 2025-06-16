@@ -114,6 +114,9 @@ void StartTask05(void *argument);
 /* USER CODE BEGIN 0 */
 int MyLowLevelPutchar(int x) // отправка байта в UART
 {
+#ifdef SEGGER_RTT_H
+	SEGGER_RTT_PutChar(0, x); 
+#endif
   	HAL_UART_Transmit(&huart1, (uint8_t *)&x, 1, 0xFFFF);
 	return(x);
 }
@@ -165,8 +168,8 @@ int main(void)
   MX_USART1_UART_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
-  
-	printf("\r\n (c) %s %s RusikOk \r\n", __DATE__, __TIME__);	 // приветствие
+	LOG_START();
+	printf("\r\n (c) RusikOk %s %s \r\n", __DATE__, __TIME__);	 // приветствие
 	
   /* USER CODE END 2 */
 

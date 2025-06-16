@@ -20,7 +20,7 @@
         <CStepIntDis>_ 0</CStepIntDis>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3306999673</Checksum>
+        <Checksum>2261535107</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
@@ -102,6 +102,15 @@
         <LogFile>_ ""</LogFile>
         <Category2>_ 0</Category2>
     </LogFile>
+    <TerminalIO>
+        <InputSource>1</InputSource>
+        <InputMode2>10</InputMode2>
+        <Filename>$PROJ_DIR$\TermIOInput.txt</Filename>
+        <InputEcho>1</InputEcho>
+        <ShowReset>0</ShowReset>
+        <InputEncodingICU>0</InputEncodingICU>
+        <OutputEncodingICU>0</OutputEncodingICU>
+    </TerminalIO>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -156,15 +165,6 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
-    <TerminalIO>
-        <InputSource>1</InputSource>
-        <InputMode2>10</InputMode2>
-        <Filename>$PROJ_DIR$\TermIOInput.txt</Filename>
-        <InputEcho>1</InputEcho>
-        <ShowReset>0</ShowReset>
-        <InputEncodingICU>0</InputEncodingICU>
-        <OutputEncodingICU>0</OutputEncodingICU>
-    </TerminalIO>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
