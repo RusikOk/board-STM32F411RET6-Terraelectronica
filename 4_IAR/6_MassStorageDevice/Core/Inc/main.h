@@ -39,23 +39,12 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
-/* USER CODE END ET */
-
-/* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
-
-/* USER CODE END EC */
-
-/* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
 #define LED1_ON()   	LED1_GPIO_Port->BSRR = (uint32_t)LED1_Pin
 #define LED1_OFF()  	LED1_GPIO_Port->BSRR = (uint32_t)LED1_Pin << 16U;
 #define LED2_ON()   	LED2_GPIO_Port->BSRR = (uint32_t)LED2_Pin
 #define LED2_OFF()  	LED2_GPIO_Port->BSRR = (uint32_t)LED2_Pin << 16U;
 #define LED3_ON()   	LED3_GPIO_Port->BSRR = (uint32_t)LED3_Pin
 #define LED3_OFF()  	LED3_GPIO_Port->BSRR = (uint32_t)LED3_Pin << 16U;
-
 										/* макросы для RTT */
 #ifdef SEGGER_RTT_H
 #define LOG_START()					SEGGER_RTT_WriteString(0, RTT_CTRL_CLEAR RTT_CTRL_RESET RTT_CTRL_TEXT_BRIGHT_GREEN); 		/* очистка терминала и установка стандартных параметров оформления */
@@ -79,6 +68,16 @@ extern "C" {
 #define LOG_POWEROFF()					SEGGER_RTT_WriteString(0, RTT_CTRL_TEXT_BRIGHT_RED	"\r\n\r\n\t +------------------+\r\n\t |    POWER  OFF    |\r\n\t +------------------+\r\n" RTT_CTRL_TEXT_BRIGHT_GREEN);
 //#define LOG_LCD(L1, L2)					SEGGER_RTT_WriteString(0, RTT_CTRL_TEXT_BRIGHT_CYAN	"\r\n\r\n\t +------------------+"); SEGGER_RTT_printf(0,  "\r\n\t | %16.16s |", L1); SEGGER_RTT_printf(0, "\r\n\t | %16.16s |", L2); SEGGER_RTT_WriteString(0, "\r\n\t +------------------+\r\n" RTT_CTRL_TEXT_BRIGHT_GREEN);
 #endif
+/* USER CODE END ET */
+
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
+
+/* USER CODE END EC */
+
+/* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN EM */
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -95,10 +94,6 @@ void Error_Handler(void);
 #define LED2_GPIO_Port GPIOA
 #define LED3_Pin GPIO_PIN_6
 #define LED3_GPIO_Port GPIOA
-#define SD_POWER_Pin GPIO_PIN_0
-#define SD_POWER_GPIO_Port GPIOB
-#define SD_DETECT_Pin GPIO_PIN_1
-#define SD_DETECT_GPIO_Port GPIOB
 #define USB_DISCONNECT_Pin GPIO_PIN_5
 #define USB_DISCONNECT_GPIO_Port GPIOB
 #define BTN1_Pin GPIO_PIN_6
