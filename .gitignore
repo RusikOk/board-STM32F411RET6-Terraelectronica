@@ -46,3 +46,6 @@ $RECYCLE.BIN/
 *.ninja
 .ninja_log
 .ninja_deps
+
+# RusikOk
+**/7_MassStorageBootLoader

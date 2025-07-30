@@ -63,8 +63,8 @@
   */
 
 #define STORAGE_LUN_NBR                  1
-#define STORAGE_BLK_NBR                  0x80	/* 64kB */
-#define STORAGE_BLK_SIZ                  0x200
+#define STORAGE_BLK_NBR                  0xC0	/* 96kB */
+#define STORAGE_BLK_SIZ                  0x200	/* 512B */
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
 uint8_t bufRAM[STORAGE_BLK_NBR * STORAGE_BLK_SIZ];

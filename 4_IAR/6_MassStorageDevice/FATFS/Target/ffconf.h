@@ -44,7 +44,7 @@
 /   2: f_opendir(), f_readdir() and f_closedir() are removed in addition to 1.
 /   3: f_lseek() function is removed in addition to 2. */
 
-#define _USE_STRFUNC         2      /* 0:Disable or 1-2:Enable */
+#define _USE_STRFUNC         1      /* 0:Disable or 1-2:Enable */
 /* This option switches string functions, f_gets(), f_putc(), f_puts() and
 /  f_printf().
 /
@@ -214,8 +214,8 @@
 /  Note that enabling exFAT discards C89 compatibility. */
 
 #define _FS_NORTC	1
-#define _NORTC_MON	6
-#define _NORTC_MDAY	4
+#define _NORTC_MON	1
+#define _NORTC_MDAY	1
 #define _NORTC_YEAR	2025
 /* The option _FS_NORTC switches timestamp function. If the system does not have
 /  any RTC function or valid timestamp is not needed, set _FS_NORTC = 1 to disable

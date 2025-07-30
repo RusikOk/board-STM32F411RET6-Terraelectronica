@@ -122,15 +122,20 @@ int main(void)
 	fres = f_mount(&fs, "", 1);
 	if(FR_NO_FILESYSTEM == fres)
 		fres = f_mkfs("", FM_FAT, 0, workBuf, _MAX_SS);
-  	fres = f_mount(&fs, "", 1);
+  	
+	fres = f_mount(&fs, "", 1);
+	fres = f_setlabel("VIY 51");
+	
+	fres = f_open(&file, "HOME.URL", FA_CREATE_NEW | FA_WRITE); // создаем новый файл
+	f_puts("[InternetShortcut]\r\nIDList=\r\nURL=https://viy.ua\r\n", &file); // записываем в файл данные
+	fres = f_close(&file); // закрываем файл
+	
 	fres = f_open(&file, "README.TXT", FA_CREATE_NEW | FA_WRITE); // создаем новый файл
 	f_puts("http://komon.systems/s/?regSD\r\n", &file); // записываем в файл данные
-	f_puts("[InternetShortcut]\r\nIDList=\r\nURL=http://komon.systems/s/?regSD\r\n", &file); // записываем в файл данные
 	f_puts("123456789", &file); // записываем в файл данные
 	fres = f_close(&file); // закрываем файл
 	
 	f_mount(0, "", 0);
-	
 	
 	HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_RESET);
   /* USER CODE END 2 */
