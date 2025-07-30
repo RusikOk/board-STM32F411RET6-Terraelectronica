@@ -47,17 +47,17 @@ extern "C" {
 #define LED3_OFF()  	LED3_GPIO_Port->BSRR = (uint32_t)LED3_Pin << 16U;
 										/* макросы для RTT */
 #ifdef SEGGER_RTT_H
-#define LOG_START()					SEGGER_RTT_WriteString(0, RTT_CTRL_CLEAR RTT_CTRL_RESET RTT_CTRL_TEXT_BRIGHT_GREEN); 		/* очистка терминала и установка стандартных параметров оформления */
+#define LOG_START()					SEGGER_RTT_Init(); SEGGER_RTT_SetTerminal(0); SEGGER_RTT_WriteString(0, RTT_CTRL_CLEAR RTT_CTRL_RESET RTT_CTRL_TEXT_BRIGHT_GREEN);		/* очистка терминала и установка стандартных параметров оформления */
 #define LOG_FILE()					SEGGER_RTT_WriteString(0, RTT_CTRL_TEXT_BRIGHT_YELLOW "\r\n\r\nFILE: " __FILE__ RTT_CTRL_TEXT_BRIGHT_GREEN); 	/* путь к текущему файлу */
 #define LOGT(text)					SEGGER_RTT_WriteString(0, text); 										/* простой вывод текста */
 #define LOGF(format, args...)			        SEGGER_RTT_printf(0, "\r\n%d " format, __LINE__, args); 							/* форматирваный вывод текста с номером строки в нулевой терминал */
 #define LOG(text)					SEGGER_RTT_printf(0, "\r\n%d %s", __LINE__, text); 								/* вывод текста с номером строки в нулевой терминал */
-#define LOG0(text)					SEGGER_RTT_printf(0, "\r\n%d %s", __LINE__, text);
-#define LOG1(text)					SEGGER_RTT_printf(1, "\r\n%d %s", __LINE__, text);	 
-#define LOG2(text)					SEGGER_RTT_printf(2, "\r\n%d %s", __LINE__, text);
-#define LOG3(text)					SEGGER_RTT_printf(3, "\r\n%d %s", __LINE__, text);
-#define LOG4(text)					SEGGER_RTT_printf(4, "\r\n%d %s", __LINE__, text);
-#define LOG5(text)					SEGGER_RTT_printf(5, "\r\n%d %s", __LINE__, text);
+#define LOG0(text)					SEGGER_RTT_SetTerminal(0); SEGGER_RTT_printf(0, RTT_CTRL_TEXT_BRIGHT_GREEN"\r\n%d %s", __LINE__, text);
+#define LOG1(text)					SEGGER_RTT_SetTerminal(1); SEGGER_RTT_printf(0, RTT_CTRL_TEXT_BRIGHT_MAGENTA"\r\n%d %s", __LINE__, text);	 
+#define LOG2(text)					SEGGER_RTT_SetTerminal(2); SEGGER_RTT_printf(0, RTT_CTRL_TEXT_BRIGHT_CYAN"\r\n%d %s", __LINE__, text);
+#define LOG3(text)					SEGGER_RTT_SetTerminal(3); SEGGER_RTT_printf(0, "\r\n%d %s", __LINE__, text);
+#define LOG4(text)					SEGGER_RTT_SetTerminal(4); SEGGER_RTT_printf(0, "\r\n%d %s", __LINE__, text);
+#define LOG5(text)					SEGGER_RTT_SetTerminal(5); SEGGER_RTT_printf(0, "\r\n%d %s", __LINE__, text);
 #define LOG_NMI()					SEGGER_RTT_WriteString(0, RTT_CTRL_TEXT_BRIGHT_RED	"\r\n\r\n\t +------------------+\r\n\t |       NMI        |\r\n\t +------------------+\r\n" RTT_CTRL_TEXT_BRIGHT_GREEN);
 #define LOG_PVD()					SEGGER_RTT_WriteString(0, RTT_CTRL_TEXT_BRIGHT_RED	"\r\n\r\n\t +------------------+\r\n\t |       PVD        |\r\n\t +------------------+\r\n" RTT_CTRL_TEXT_BRIGHT_GREEN);
 #define LOG_HARDFAULT()					SEGGER_RTT_WriteString(0, RTT_CTRL_TEXT_BRIGHT_RED	"\r\n\r\n\t +------------------+\r\n\t |    HARD FAULT    |\r\n\t +------------------+\r\n" RTT_CTRL_TEXT_BRIGHT_GREEN);

@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "fatfs.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -44,7 +45,10 @@
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-
+FATFS	fs;
+FRESULT	fres;
+FIL	file;
+BYTE	workBuf[_MAX_SS];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,10 +113,25 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   	HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_SET);
   	LOG_START();
 	printf("\r\n (c) RusikOk %s %s \r\n", __DATE__, __TIME__);	 // приветствие
+	
+	fres = f_mount(&fs, "", 1);
+	if(FR_NO_FILESYSTEM == fres)
+		fres = f_mkfs("", FM_FAT, 0, workBuf, _MAX_SS);
+  	fres = f_mount(&fs, "", 1);
+	fres = f_open(&file, "README.TXT", FA_CREATE_NEW | FA_WRITE); // создаем новый файл
+	f_puts("http://komon.systems/s/?regSD\r\n", &file); // записываем в файл данные
+	f_puts("[InternetShortcut]\r\nIDList=\r\nURL=http://komon.systems/s/?regSD\r\n", &file); // записываем в файл данные
+	f_puts("123456789", &file); // записываем в файл данные
+	fres = f_close(&file); // закрываем файл
+	
+	f_mount(0, "", 0);
+	
+	
 	HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
@@ -272,8 +291,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

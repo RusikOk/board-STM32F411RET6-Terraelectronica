@@ -178,7 +178,7 @@ int8_t STORAGE_Init_FS(uint8_t lun)
 {
   /* USER CODE BEGIN 2 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_Init_FS(uint8_t lun)");
+	LOG1("\r\n\r\n\r\n\r\n\r\n\r\nint8_t STORAGE_Init_FS(uint8_t lun)");
 	UNUSED(lun);
 	LED1_OFF();
 	return(USBD_OK);
@@ -196,12 +196,12 @@ int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_
 {
   /* USER CODE BEGIN 3 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)");
+	LOG1("int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)");
 	UNUSED(lun);
-
 	*block_num  = STORAGE_BLK_NBR;
 	*block_size = STORAGE_BLK_SIZ;
 	LED1_OFF();
+	
 	return(USBD_OK);
   /* USER CODE END 3 */
 }
@@ -215,9 +215,10 @@ int8_t STORAGE_IsReady_FS(uint8_t lun)
 {
   /* USER CODE BEGIN 4 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_IsReady_FS(uint8_t lun)");
+	LOG1("int8_t STORAGE_IsReady_FS(uint8_t lun)");
 	UNUSED(lun);
 	LED1_OFF();
+	
 	return(USBD_OK);
   /* USER CODE END 4 */
 }
@@ -231,9 +232,10 @@ int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
 {
   /* USER CODE BEGIN 5 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)");
+	LOG1("int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)");
 	UNUSED(lun);
 	LED1_OFF();
+	
 	return(USBD_OK);
   /* USER CODE END 5 */
 }
@@ -250,14 +252,14 @@ int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 {
   /* USER CODE BEGIN 6 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)");
+	LOG1("int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)");
 	memcpy(buf, &bufRAM[STORAGE_BLK_SIZ * blk_addr], STORAGE_BLK_SIZ * blk_len);
-	
 	UNUSED(lun);
 	UNUSED(buf);
 	UNUSED(blk_addr);
 	UNUSED(blk_len);
 	LED1_OFF();
+	
 	return(USBD_OK);
   /* USER CODE END 6 */
 }
@@ -274,14 +276,14 @@ int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t b
 {
   /* USER CODE BEGIN 7 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)");
+	LOG1("int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)");
 	memcpy(&bufRAM[STORAGE_BLK_SIZ * blk_addr], buf, STORAGE_BLK_SIZ * blk_len);
-	
 	UNUSED(lun);
 	UNUSED(buf);
 	UNUSED(blk_addr);
 	UNUSED(blk_len);
 	LED1_OFF();
+	
 	return(USBD_OK);
   /* USER CODE END 7 */
 }
@@ -295,8 +297,9 @@ int8_t STORAGE_GetMaxLun_FS(void)
 {
   /* USER CODE BEGIN 8 */
 	LED1_ON();
-	printf("\r\n int8_t STORAGE_GetMaxLun_FS(void)");
+	LOG1("int8_t STORAGE_GetMaxLun_FS(void)");
 	LED1_OFF();
+	
 	return(STORAGE_LUN_NBR - 1);
   /* USER CODE END 8 */
 }
