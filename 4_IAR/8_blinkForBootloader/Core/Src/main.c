@@ -140,7 +140,11 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+	// для правильной работы с bootloader
+	__disable_irq();
+	__DMB(); // ARM рекомендует выполнить инструкцию DMB перед перемещением VTOR
+	SCB->VTOR = APP_START_ADDR; // Vector Table Relocation
+	__enable_irq();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -169,6 +173,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	LOG_START();
 	printf("\r\n (c) RusikOk %s %s \r\n", __DATE__, __TIME__);	 // приветствие
+	
+	// читаем данные отправленные из bootloader
+	blInit(&hrtc);
 	
   /* USER CODE END 2 */
 

@@ -2,16 +2,16 @@
 
 <h2>1_BOARD_STM32F411RE</h2>
 заготовка под новый проэкт с настроенной стандартной периферией платы под МК STM32F411RE<br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png" alt="">
+![pinout](https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png)
 
 <h2>2_VT100 terminal</h2>
 настройки COM порта 115200 8N1<br>
 <br>
 внешний вид<br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/0_out.jpg" alt=""><br>
+![out](/2_VT100%20terminal/0_out.jpg)
 настройки терминальной программы:<br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/1_terminal.jpg" alt=""><br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/2_VT100%20terminal/2_keyboard.jpg" alt=""><br>
+![terminal](/2_VT100%20terminal/1_terminal.jpg)
+![keyboard](/2_VT100%20terminal/2_keyboard.jpg)
 <br>
 references:<br>
 <a href="http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html">Управляющие кодовые последовательности терминала ANSI/VT100</a><br>
@@ -21,7 +21,7 @@ references:<br>
 
 <h2>3_freeRTOS</h2>
 для начала включаем отладочный плагин freeRTOS в IAR<br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/4_IAR/3_freeRTOS/0_plugin.jpg" alt=""><br>
+![plugin](/3_freeRTOS/0_plugin.jpg)
 вывод отладочной информации на дисплей (старая реализация)<br>
 https://user-images.githubusercontent.com/65393007/173113990-68118f72-7dc7-4784-ab09-c65a8d762e3c.mp4
 <br>
@@ -32,7 +32,25 @@ references:<br>
 <a href="https://habr.com/ru/post/352782/">Отладка многопоточных программ на базе FreeRTOS</a><br>
 <a href="https://github.com/STMicroelectronics/STM32CubeF0/tree/master/Utilities/CPU">загрузка ЦП</a><br>
 <a href="https://percepio.com/iar/">Tracealyzer and IAR Embedded Workbench</a><br>
-<a href=""></a><br>
+
+<h2>8_blinkForBootloader</h2>
+настройка типа выходного файла в IAR<br>
+![outfile](/8_blinkForBootloader/0_outfile.png)
+настройка адреса таблицы векторов прерываний и адреса начала программы
+![vectors](/8_blinkForBootloader/1_vectors.png)
+![rom](/8_blinkForBootloader/2_rom.png)
+
+<br>
+references:<br>
+<a href="https://microsin.net/programming/arm/creating-a-bootloader-for-cortex-m.html">IAR: создание загрузчика для Cortex-M</a><br>
+<a href="https://microsin.net/programming/arm-troubleshooting-faq/iar-change-program-start-address.html">IAR EWB for ARM: как поменять абсолютный начальный адрес выполнения программы</a><br>
+<a href="https://microtechnics.ru/mikrokontroller-i-bootloader-prakticheskaya-realizaciya-dlya-stm32/">Микроконтроллер STM32 и Bootloader. Пример реализации.</a><br>
+<a href="https://habr.com/ru/articles/754216/">23 Атрибута Хорошего Загрузчика</a><br>
+<a href="https://habr.com/ru/articles/789598/">Bootloader. Part 1. Нюансы Cortex-M, устройство памяти stm32 и преднастройка</a><br>
+<a href="https://habr.com/ru/articles/432966/">Загрузчик с шифрованием для STM32</a><br>
+<a href="https://habr.com/ru/articles/432966/comments/#comment_19492260">в void ExecMainFW() возможно падение в хард фаулт...</a><br>
+<a href="https://habr.com/ru/articles/112733/">Как устроен AES</a><br>
+<a href="https://github.com/kokke/tiny-AES-c">Tiny AES in C</a><br>
 
 <!-- h2></h2>
 <img src="" alt="">

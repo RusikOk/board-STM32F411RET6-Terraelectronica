@@ -35,6 +35,7 @@ extern "C" {
 #include "stdint.h"
 #include "stdbool.h"
 #include "SEGGER_RTT.h"	// библиотека для отладочного RTT вывода через интерфейс отладчика
+#include "bootloader.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
