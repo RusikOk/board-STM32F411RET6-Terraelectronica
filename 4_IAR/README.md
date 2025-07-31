@@ -10,8 +10,8 @@
 внешний вид<br>
 ![out](2_VT100%20terminal/0_out.jpg)
 настройки терминальной программы:<br>
-![terminal](/2_VT100%20terminal/1_terminal.jpg)
-![keyboard](/2_VT100%20terminal/2_keyboard.jpg)
+![terminal](2_VT100%20terminal/1_terminal.jpg)
+![keyboard](2_VT100%20terminal/2_keyboard.jpg)
 <br>
 references:<br>
 <a href="http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html">Управляющие кодовые последовательности терминала ANSI/VT100</a><br>
@@ -21,7 +21,7 @@ references:<br>
 
 ## 3_freeRTOS
 для начала включаем отладочный плагин freeRTOS в IAR<br>
-![plugin](/3_freeRTOS/0_plugin.jpg)
+![plugin](3_freeRTOS/0_plugin.jpg)
 вывод отладочной информации на дисплей (старая реализация)<br>
 https://user-images.githubusercontent.com/65393007/173113990-68118f72-7dc7-4784-ab09-c65a8d762e3c.mp4
 <br>
@@ -35,10 +35,10 @@ references:<br>
 
 ## 8_blinkForBootloader
 настройка типа выходного файла в IAR<br>
-![outfile](/8_blinkForBootloader/0_outfile.png)
+![outfile](8_blinkForBootloader/0_outfile.png)
 настройка адреса таблицы векторов прерываний и адреса начала программы
-![vectors](/8_blinkForBootloader/1_vectors.png)
-![rom](/8_blinkForBootloader/2_rom.png)
+![vectors](8_blinkForBootloader/1_vectors.png)
+![rom](8_blinkForBootloader/2_rom.png)
 
 <br>
 references:<br>

@@ -14,28 +14,28 @@
  <li>- CAN</li> 
 </ul>
 
-<h2>terraelectronica TE-STM32F103RET6 KIT v100</h2>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/6_%D1%84%D0%BE%D1%82%D0%BE/terraelectronica%20TE-STM32F103RET6%20KIT%20v100%20top.jpg" alt="">
+## terraelectronica TE-STM32F103RET6 KIT v100
+![original board](6_photo/terraelectronica%20TE-STM32F103RET6%20KIT%20v100%20top.jpg)
 <a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F103RET6%20KIT%20v100.pdf">оригинальная схема</a>
 
-<h2>terraelectronica TE-STM32F103RET6 KIT v101</h2>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/6_%D1%84%D0%BE%D1%82%D0%BE/terraelectronica%20TE-STM32F103RET6%20KIT%20v101%20top.jpg" alt="">
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/6_%D1%84%D0%BE%D1%82%D0%BE/terraelectronica%20TE-STM32F103RET6%20KIT%20v101%20bottom.jpg" alt="">
+## terraelectronica TE-STM32F103RET6 KIT v101
+![top](6_photo/terraelectronica%20TE-STM32F103RET6%20KIT%20v101%20top.jpg)
+![bottom](6_photo/terraelectronica%20TE-STM32F103RET6%20KIT%20v101%20bottom.jpg)
 
-<h2>terraelectronica TE-STM32F411RET6 KIT v102</h2>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/6_%D1%84%D0%BE%D1%82%D0%BE/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20top.jpg" alt="">
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/6_%D1%84%D0%BE%D1%82%D0%BE/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20bottom.jpg" alt="">
+## terraelectronica TE-STM32F411RET6 KIT v102
+![top](6_photo/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20top.jpg)
+![bottom](6_photo/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20bottom.jpg)
 
-схема
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png" alt="">
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102.jpg" alt="">
+пинаут, схема
+![pinout](3_schematic/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png)
+![schematic](3_schematic/terraelectronica%20TE-STM32F411RET6%20KIT%20v102.jpg)
 
 Vcap
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20Vcap.jpg" alt="">
+![vCap](3_schematic/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20Vcap.jpg)
 
-<h2>terraelectronica TE-STM32F411RET6 KIT v103</h2>
+## terraelectronica TE-STM32F411RET6 KIT v103
 <a href="http://we.easyelectronics.ru/Shematech/stm32---vhodim-v-bootloader-po-knopke.html">STM32 - входим в bootloader по кнопке.</a>
 <br>
 <br>
-<img src="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/auto%20reset%20on%20boot0.png" alt="">
+![vCap](3_schematic/auto%20reset%20on%20boot0.png)
 
