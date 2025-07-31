@@ -8,7 +8,7 @@
 настройки COM порта 115200 8N1<br>
 <br>
 внешний вид<br>
-![out](/2_VT100%20terminal/0_out.jpg)
+![out](2_VT100%20terminal/0_out.jpg)
 настройки терминальной программы:<br>
 ![terminal](/2_VT100%20terminal/1_terminal.jpg)
 ![keyboard](/2_VT100%20terminal/2_keyboard.jpg)
