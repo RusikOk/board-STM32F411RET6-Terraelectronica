@@ -1,10 +1,10 @@
 # описание проектов IAR
 
-<h2>1_BOARD_STM32F411RE</h2>
+## 1_BOARD_STM32F411RE
 заготовка под новый проэкт с настроенной стандартной периферией платы под МК STM32F411RE<br>
 ![pinout](https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png)
 
-<h2>2_VT100 terminal</h2>
+## 2_VT100 terminal
 настройки COM порта 115200 8N1<br>
 <br>
 внешний вид<br>
@@ -19,7 +19,7 @@ references:<br>
 <a href="http://vkontakte.doguran.ru/kak-pisat-simvolami.php">создать надпись из символов</a><br>
 <a href="https://studfile.net/preview/16485874/page:123/">Правильный способ чтения значений даты/времени</a><br>
 
-<h2>3_freeRTOS</h2>
+## 3_freeRTOS
 для начала включаем отладочный плагин freeRTOS в IAR<br>
 ![plugin](/3_freeRTOS/0_plugin.jpg)
 вывод отладочной информации на дисплей (старая реализация)<br>
@@ -33,7 +33,7 @@ references:<br>
 <a href="https://github.com/STMicroelectronics/STM32CubeF0/tree/master/Utilities/CPU">загрузка ЦП</a><br>
 <a href="https://percepio.com/iar/">Tracealyzer and IAR Embedded Workbench</a><br>
 
-<h2>8_blinkForBootloader</h2>
+## 8_blinkForBootloader
 настройка типа выходного файла в IAR<br>
 ![outfile](/8_blinkForBootloader/0_outfile.png)
 настройка адреса таблицы векторов прерываний и адреса начала программы
@@ -56,5 +56,5 @@ references:<br>
 <img src="" alt="">
 <img src="" alt="" !-->
 
-<h2>STM32F103RET6</h2>
+## STM32F103RET6
 заготовка под новый проэкт с настроенной стандартной периферией платы под МК STM32F103. <b>не актуально !!!</b>
