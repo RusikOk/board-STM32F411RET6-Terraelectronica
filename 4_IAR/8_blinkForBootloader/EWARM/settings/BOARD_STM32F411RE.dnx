@@ -20,7 +20,7 @@
         <CStepIntDis>_ 0</CStepIntDis>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1458399629</Checksum>
+        <Checksum>2393651284</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
@@ -88,8 +88,8 @@
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.60\arm\config\debugger\ST\STM32F411RE.ddf</MemConfigValue>
     </PlDriver>
     <ArmDriver>
-        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
         <EnableCache>0</EnableCache>
+        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
     <CallStackLog>
         <Enabled>0</Enabled>

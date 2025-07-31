@@ -1476,6 +1476,15 @@
         <group>
             <name>User</name>
             <group>
+                <name>bootloader</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\7_MassStorageBootLoader\bootloader\bootloader.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\7_MassStorageBootLoader\bootloader\bootloader.h</name>
+                </file>
+            </group>
+            <group>
                 <name>Core</name>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\freertos.c</name>
@@ -1547,27 +1556,6 @@
                     <name>$PROJ_DIR$\..\RTT\SEGGER_RTT_printf.c</name>
                 </file>
             </group>
-            <group>
-                <name>USB_DEVICE</name>
-                <group>
-                    <name>App</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\USB_DEVICE\App\usb_device.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\USB_DEVICE\App\usbd_cdc_if.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\USB_DEVICE\App\usbd_desc.c</name>
-                    </file>
-                </group>
-                <group>
-                    <name>Target</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\USB_DEVICE\Target\usbd_conf.c</name>
-                    </file>
-                </group>
-            </group>
         </group>
     </group>
     <group>
@@ -1614,12 +1602,6 @@
                 <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_mmc.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd_ex.c</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</name>
             </file>
             <file>
@@ -1651,9 +1633,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c</name>
             </file>
         </group>
     </group>
@@ -1708,21 +1687,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Middlewares\Third_Party\FreeRTOS\Source\timers.c</name>
-            </file>
-        </group>
-        <group>
-            <name>USB_Device_Library</name>
-            <file>
-                <name>$PROJ_DIR$\..\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src\usbd_cdc.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_core.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c</name>
             </file>
         </group>
     </group>
