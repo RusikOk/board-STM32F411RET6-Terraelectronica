@@ -16,7 +16,7 @@
 
 ## terraelectronica TE-STM32F103RET6 KIT v100
 ![original board](6_photo/terraelectronica%20TE-STM32F103RET6%20KIT%20v100%20top.jpg)
-<a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F103RET6%20KIT%20v100.pdf">оригинальная схема</a>
+<a href="3_schematic/terraelectronica%20TE-STM32F103RET6%20KIT%20v100.pdf">оригинальная схема</a>
 
 ## terraelectronica TE-STM32F103RET6 KIT v101
 ![top](6_photo/terraelectronica%20TE-STM32F103RET6%20KIT%20v101%20top.jpg)
@@ -38,4 +38,3 @@ Vcap
 <br>
 <br>
 ![vCap](3_schematic/auto%20reset%20on%20boot0.png)
-

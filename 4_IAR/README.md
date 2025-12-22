@@ -2,16 +2,16 @@
 
 ## 1_BOARD_STM32F411RE
 заготовка под новый проэкт с настроенной стандартной периферией платы под МК STM32F411RE<br>
-![pinout](https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/3_%D1%81%D1%85%D0%B5%D0%BC%D1%8B/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png)
+![pinout](../3_schematic/terraelectronica%20TE-STM32F411RET6%20KIT%20v102%20cube.png)
 
 ## 2_VT100 terminal
 настройки COM порта 115200 8N1<br>
-<br>
-внешний вид<br>
+<br>внешний вид<br>
 ![out](2_VT100%20terminal/0_out.jpg)
-настройки терминальной программы:<br>
+<br>настройки терминальной программы:<br>
 ![terminal](2_VT100%20terminal/1_terminal.jpg)
 ![keyboard](2_VT100%20terminal/2_keyboard.jpg)
+
 <br>
 references:<br>
 <a href="http://microsin.net/adminstuff/xnix/ansivt100-terminal-control-escape-sequences.html">Управляющие кодовые последовательности терминала ANSI/VT100</a><br>
@@ -22,8 +22,9 @@ references:<br>
 ## 3_freeRTOS
 для начала включаем отладочный плагин freeRTOS в IAR<br>
 ![plugin](3_freeRTOS/0_plugin.jpg)
-вывод отладочной информации на дисплей (старая реализация)<br>
+<br>вывод отладочной информации на дисплей (старая реализация)<br>
 https://user-images.githubusercontent.com/65393007/173113990-68118f72-7dc7-4784-ab09-c65a8d762e3c.mp4
+
 <br>
 references:<br>
 <a href="https://github.com/RusikOk/board-STM32F411RET6-Terraelectronica/blob/main/2_datasheet/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%9A%D1%83%D1%80%D0%BD%D0%B8%D1%86%20-%20FreeRTOS%201-9%20%D1%87%D0%B0%D1%81%D1%82%D0%B8.pdf">Андрей Курниц - FreeRTOS 1-9 части</a><br>
@@ -36,7 +37,7 @@ references:<br>
 ## 8_blinkForBootloader
 настройка типа выходного файла в IAR<br>
 ![outfile](8_blinkForBootloader/0_outfile.png)
-настройка адреса таблицы векторов прерываний и адреса начала программы
+<br>настройка адреса таблицы векторов прерываний и адреса начала программы<br>
 ![vectors](8_blinkForBootloader/1_vectors.png)
 ![rom](8_blinkForBootloader/2_rom.png)
 
