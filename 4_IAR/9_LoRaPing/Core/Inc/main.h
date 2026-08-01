@@ -89,6 +89,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SX_MISO_Pin GPIO_PIN_2
+#define SX_MISO_GPIO_Port GPIOC
+#define SX_MOSI_Pin GPIO_PIN_3
+#define SX_MOSI_GPIO_Port GPIOC
 #define LED1_Pin GPIO_PIN_4
 #define LED1_GPIO_Port GPIOA
 #define LED2_Pin GPIO_PIN_5
@@ -99,6 +103,18 @@ void Error_Handler(void);
 #define SD_POWER_GPIO_Port GPIOB
 #define SD_DETECT_Pin GPIO_PIN_1
 #define SD_DETECT_GPIO_Port GPIOB
+#define SX_RFSW_Pin GPIO_PIN_2
+#define SX_RFSW_GPIO_Port GPIOB
+#define SX_SCK_Pin GPIO_PIN_10
+#define SX_SCK_GPIO_Port GPIOB
+#define SX_NSS_Pin GPIO_PIN_12
+#define SX_NSS_GPIO_Port GPIOB
+#define SX_NRST_Pin GPIO_PIN_13
+#define SX_NRST_GPIO_Port GPIOB
+#define SX_BUSY_Pin GPIO_PIN_14
+#define SX_BUSY_GPIO_Port GPIOB
+#define SX_DIO1_Pin GPIO_PIN_15
+#define SX_DIO1_GPIO_Port GPIOB
 #define USB_DISCONNECT_Pin GPIO_PIN_5
 #define USB_DISCONNECT_GPIO_Port GPIOB
 #define BTN1_Pin GPIO_PIN_6
