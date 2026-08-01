@@ -321,7 +321,7 @@ static void MX_RTC_Init(void)
 
   /* USER CODE BEGIN RTC_Init 1 */
   
-	if((*(__IO uint32_t *)RCC_BDCR_RTCEN_BB) == ENABLE) // если батарейка жива и часы идут
+	if(ENABLE == (*(__IO uint32_t *)RCC_BDCR_RTCEN_BB)) // если батарейка жива и часы идут
 		return; // то пропустим инициализачию часов нулями
 	
   /* USER CODE END RTC_Init 1 */
