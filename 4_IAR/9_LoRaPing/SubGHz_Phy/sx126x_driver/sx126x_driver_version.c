@@ -1,7 +1,7 @@
 /*!
- * @file      sx126x_driver_version.h
+ * @file      sx126x_driver_version.c
  *
- * @brief     Placeholder to keep the version of SX126X driver.
+ * @brief     Placeholder to keep the version of SX126x driver.
  *
  * The Clear BSD License
  * Copyright Semtech Corporation 2023. All rights reserved.
@@ -32,54 +32,57 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SX126X_DRIVER_VERSION_H
-#define SX126X_DRIVER_VERSION_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*
  * -----------------------------------------------------------------------------
  * --- DEPENDENCIES ------------------------------------------------------------
  */
 
-/*
- * -----------------------------------------------------------------------------
- * --- PUBLIC MACROS -----------------------------------------------------------
- */
+#include "sx126x_driver_version.h"
 
 /*
  * -----------------------------------------------------------------------------
- * --- PUBLIC CONSTANTS --------------------------------------------------------
+ * --- PRIVATE MACROS-----------------------------------------------------------
  */
 
-/**
- * @brief Value of driver version string
- */
-#define SX126X_DRIVER_VERSION "v2.5.0"
+#define STR_HELPER( x ) #x
+#define STR( x ) STR_HELPER( x )
 
-/*
- * -----------------------------------------------------------------------------
- * --- PUBLIC TYPES ------------------------------------------------------------
- */
+#define SX126X_DRIVER_VERSION_FULL \
+    "v" STR( SX126X_DRIVER_VERSION_MAJOR ) "." STR( SX126X_DRIVER_VERSION_MINOR ) "." STR( SX126X_DRIVER_VERSION_PATCH )
 
 /*
  * -----------------------------------------------------------------------------
- * --- PUBLIC FUNCTIONS PROTOTYPES ---------------------------------------------
+ * --- PRIVATE CONSTANTS -------------------------------------------------------
  */
 
-/**
- * @brief Get version of driver as string
- *
- * @return String describing driver version
+/*
+ * -----------------------------------------------------------------------------
+ * --- PRIVATE TYPES -----------------------------------------------------------
  */
-const char* sx126x_driver_version_get_version_string( void );
 
-#ifdef __cplusplus
+/*
+ * -----------------------------------------------------------------------------
+ * --- PRIVATE VARIABLES -------------------------------------------------------
+ */
+
+/*
+ * -----------------------------------------------------------------------------
+ * --- PRIVATE FUNCTIONS DECLARATION -------------------------------------------
+ */
+
+/*
+ * -----------------------------------------------------------------------------
+ * --- PUBLIC FUNCTIONS DEFINITION ---------------------------------------------
+ */
+
+const char* sx126x_driver_version_get_version_string( void )
+{
+    return ( const char* ) SX126X_DRIVER_VERSION_FULL;
 }
-#endif
 
-#endif  // SX126X_DRIVER_VERSION_H
+/*
+ * -----------------------------------------------------------------------------
+ * --- PRIVATE FUNCTIONS DEFINITION --------------------------------------------
+ */
 
 /* --- EOF ------------------------------------------------------------------ */

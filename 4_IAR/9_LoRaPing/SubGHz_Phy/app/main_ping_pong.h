@@ -1,10 +1,10 @@
-/**
- * @file      sx126x_status.h
+/*!
+ * @file      main_ping_pong.h
  *
- * @brief     SX126x status radio driver definition
+ * @brief     Ping-pong example for SX126x chip
  *
  * The Clear BSD License
- * Copyright Semtech Corporation 2025. All rights reserved.
+ * Copyright Semtech Corporation 2022. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted (subject to the limitations in the disclaimer
@@ -32,8 +32,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SX126X_STATUS_H
-#define SX126X_STATUS_H
+#ifndef MAIN_PING_PONG_H
+#define MAIN_PING_PONG_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,11 +43,15 @@ extern "C" {
  * -----------------------------------------------------------------------------
  * --- DEPENDENCIES ------------------------------------------------------------
  */
-
+#include "apps_common.h"
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC MACROS -----------------------------------------------------------
  */
+
+#ifndef RX_TIMEOUT_VALUE
+#define RX_TIMEOUT_VALUE 600
+#endif
 
 /*
  * -----------------------------------------------------------------------------
@@ -59,17 +63,6 @@ extern "C" {
  * --- PUBLIC TYPES ------------------------------------------------------------
  */
 
-/**
- * @brief SX126X APIs return status enumeration definition
- */
-typedef enum sx126x_status_e
-{
-    SX126X_STATUS_OK = 0,
-    SX126X_STATUS_UNSUPPORTED_FEATURE,
-    SX126X_STATUS_UNKNOWN_VALUE,
-    SX126X_STATUS_ERROR,
-} sx126x_status_t;
-
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC FUNCTIONS PROTOTYPES ---------------------------------------------
@@ -79,6 +72,6 @@ typedef enum sx126x_status_e
 }
 #endif
 
-#endif  // SX126X_STATUS_H
+#endif  // MAIN_PING_PONG_H
 
 /* --- EOF ------------------------------------------------------------------ */

@@ -619,9 +619,8 @@ STATIC void lr_fhss_payload_whitening( const uint8_t* data_in, uint16_t data_in_
         uint8_t u       = data_in[index] ^ lfsr;
         data_out[index] = ( ( u & 0x0F ) << 4 ) | ( ( u & 0xF0 ) >> 4 );
         lfsr =
-            ( uint8_t ) ( ( lfsr << 1 ) |
-                          ( ( ( lfsr & 0x80 ) >> 7 ) ^
-                            ( ( ( lfsr & 0x20 ) >> 5 ) ^ ( ( ( lfsr & 0x10 ) >> 4 ) ^ ( ( lfsr & 0x8 ) >> 3 ) ) ) ) );
+            ( lfsr << 1 ) | ( ( ( lfsr & 0x80 ) >> 7 ) ^
+                              ( ( ( lfsr & 0x20 ) >> 5 ) ^ ( ( ( lfsr & 0x10 ) >> 4 ) ^ ( ( lfsr & 0x8 ) >> 3 ) ) ) );
     }
 }
 

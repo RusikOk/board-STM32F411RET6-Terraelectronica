@@ -1,10 +1,10 @@
-/**
- * @file      sx126x_hal.h
+/*!
+ * @file      sx126x_driver_version.h
  *
- * @brief     Hardware Abstraction Layer for SX126x
+ * @brief     Placeholder to keep the version of SX126x driver.
  *
  * The Clear BSD License
- * Copyright Semtech Corporation 2021. All rights reserved.
+ * Copyright Semtech Corporation 2023. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted (subject to the limitations in the disclaimer
@@ -32,8 +32,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SX126X_HAL_H
-#define SX126X_HAL_H
+#ifndef SX126X_DRIVER_VERSION_H
+#define SX126X_DRIVER_VERSION_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,10 +43,6 @@ extern "C" {
  * -----------------------------------------------------------------------------
  * --- DEPENDENCIES ------------------------------------------------------------
  */
-
-#include <stdint.h>
-#include <stdbool.h>
-#include "main.h"
 
 /*
  * -----------------------------------------------------------------------------
@@ -58,83 +54,37 @@ extern "C" {
  * --- PUBLIC CONSTANTS --------------------------------------------------------
  */
 
-/**
- * @brief Write this to SPI bus while reading data, or as a dummy/placeholder
- */
-#define SX126X_NOP ( 0x00 )
+#define SX126X_DRIVER_VERSION_MAJOR 2
+#define SX126X_DRIVER_VERSION_MINOR 3
+#define SX126X_DRIVER_VERSION_PATCH 0
 
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC TYPES ------------------------------------------------------------
  */
 
-typedef enum sx126x_hal_status_e
-{
-    SX126X_HAL_STATUS_OK    = 0,
-    SX126X_HAL_STATUS_ERROR = 3,
-} sx126x_hal_status_t;
-
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC FUNCTIONS PROTOTYPES ---------------------------------------------
  */
 
-/**
- * Radio data transfer - write
+/*!
+ * @brief Compare version information with current ones
  *
- * @remark Shall be implemented by the user
- *
- * @param [in] context          Radio implementation parameters
- * @param [in] command          Pointer to the buffer to be transmitted
- * @param [in] command_length   Buffer size to be transmitted
- * @param [in] data             Pointer to the buffer to be transmitted
- * @param [in] data_length      Buffer size to be transmitted
- *
- * @returns Operation status
+ * This macro expands to true boolean value if the version information provided in argument is compatible or
+ * retro-compatible with the version of this code base
  */
-sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* command, const uint16_t command_length, const uint8_t* data, const uint16_t data_length );
+#define SX126X_DRIVER_VERSION_CHECK( x, y, z ) \
+    ( x == SX126X_DRIVER_VERSION_MAJOR &&      \
+      ( y < SX126X_DRIVER_VERSION_MINOR ||     \
+        ( y == SX126X_DRIVER_VERSION_MINOR && z <= SX126X_DRIVER_VERSION_PATCH ) ) )
 
-/**
- * Radio data transfer - read
- *
- * @remark Shall be implemented by the user
- *
- * @param [in] context          Radio implementation parameters
- * @param [in] command          Pointer to the buffer to be transmitted
- * @param [in] command_length   Buffer size to be transmitted
- * @param [in] data             Pointer to the buffer to be received
- * @param [in] data_length      Buffer size to be received
- *
- * @returns Operation status
- */
-sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command, const uint16_t command_length, uint8_t* data, const uint16_t data_length );
-
-/**
- * Reset the radio
- *
- * @remark Shall be implemented by the user
- *
- * @param [in] context Radio implementation parameters
- *
- * @returns Operation status
- */
-sx126x_hal_status_t sx126x_hal_reset( const void* context );
-
-/**
- * Wake the radio up.
- *
- * @remark Shall be implemented by the user
- *
- * @param [in] context Radio implementation parameters
- *
- * @returns Operation status
- */
-sx126x_hal_status_t sx126x_hal_wakeup( const void* context );
+const char* sx126x_driver_version_get_version_string( void );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SX126X_HAL_H
+#endif  // SX126X_DRIVER_VERSION_H
 
 /* --- EOF ------------------------------------------------------------------ */

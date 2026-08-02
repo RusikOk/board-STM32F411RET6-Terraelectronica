@@ -1,10 +1,10 @@
 /**
- * @file      sx126x_hal.c
+ * @file      sx126x_hal.h
  *
- * @brief     Implements the SX126x radio HAL functions
+ * @brief     Hardware Abstraction Layer for SX126x
  *
  * The Clear BSD License
- * Copyright Semtech Corporation 2022. All rights reserved.
+ * Copyright Semtech Corporation 2021. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted (subject to the limitations in the disclaimer
@@ -32,6 +32,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef SX126X_HAL_H
+#define SX126X_HAL_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * -----------------------------------------------------------------------------
  * --- DEPENDENCIES ------------------------------------------------------------
@@ -39,13 +46,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <stddef.h>
-#include "sx126x_hal.h"
-//#include "sx126x_hal_context.h"
-#include "sx126x_hal.h"
-//#include "smtc_hal_mcu_spi.h"
-//#include "smtc_hal_mcu_gpio.h"
-//#include "smtc_hal_mcu.h"
 
 /*
  * -----------------------------------------------------------------------------
@@ -57,74 +57,85 @@
  * --- PUBLIC CONSTANTS --------------------------------------------------------
  */
 
+/**
+ * @brief Write this to SPI bus while reading data, or as a dummy/placeholder
+ */
+#define SX126X_NOP ( 0x00 )
+
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC TYPES ------------------------------------------------------------
  */
 
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE FUNCTIONS DECLARATION -------------------------------------------
- */
-
-/**
- * @brief Wait until radio busy pin returns to 0
- */
-void sx126x_hal_wait_on_busy( const void* radio );
+typedef enum sx126x_hal_status_e
+{
+    SX126X_HAL_STATUS_OK    = 0,
+    SX126X_HAL_STATUS_ERROR = 3,
+} sx126x_hal_status_t;
 
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC FUNCTIONS PROTOTYPES ---------------------------------------------
  */
 
-sx126x_hal_status_t sx126x_hal_reset( const void* context )
-{
-	HAL_GPIO_WritePin(SX_NRST_GPIO_Port, SX_NRST_Pin, GPIO_PIN_RESET);
-	HAL_Delay(1);
-	HAL_GPIO_WritePin(SX_NRST_GPIO_Port, SX_NRST_Pin, GPIO_PIN_SET);
-	return SX126X_HAL_STATUS_OK;
-}
-
-sx126x_hal_status_t sx126x_hal_wakeup( const void* context )
-{
-	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_RESET);
-	HAL_Delay(1);
-	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_SET);
-	return SX126X_HAL_STATUS_OK;
-}
-
-sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* command, const uint16_t command_length, const uint8_t* data, const uint16_t data_length )
-{
-	sx126x_hal_wait_on_busy(context);
-	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_RESET);
-	HAL_SPI_Transmit(&hspi2, command, command_length, 10);
-	HAL_SPI_Transmit(&hspi2, data, data_length, 10);
-	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_SET);
-	return SX126X_HAL_STATUS_OK;
-}
-
-sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command, const uint16_t command_length, uint8_t* data, const uint16_t data_length )
-{
-	sx126x_hal_wait_on_busy(context);
-	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_RESET);
-	HAL_SPI_Transmit(&hspi2, command, command_length, 10);
-	HAL_SPI_Receive(&hspi2, data, data_length, 10);
-	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_SET);
-	return SX126X_HAL_STATUS_OK;
-}
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE FUNCTIONS DEFINITION --------------------------------------------
+/**
+ * Radio data transfer - write
+ *
+ * @remark Shall be implemented by the user
+ *
+ * @param [in] context          Radio implementation parameters
+ * @param [in] command          Pointer to the buffer to be transmitted
+ * @param [in] command_length   Buffer size to be transmitted
+ * @param [in] data             Pointer to the buffer to be transmitted
+ * @param [in] data_length      Buffer size to be transmitted
+ *
+ * @returns Operation status
  */
+sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* command, const uint16_t command_length,
+                                      const uint8_t* data, const uint16_t data_length );
 
-void sx126x_hal_wait_on_busy( const void* radio )
-{
-	GPIO_PinState gpio_state;
-	do
-	{
-		gpio_state = HAL_GPIO_ReadPin(SX_BUSY_GPIO_Port, SX_BUSY_Pin);
-	} while(GPIO_PIN_SET == gpio_state);
+/**
+ * Radio data transfer - read
+ *
+ * @remark Shall be implemented by the user
+ *
+ * @param [in] context          Radio implementation parameters
+ * @param [in] command          Pointer to the buffer to be transmitted
+ * @param [in] command_length   Buffer size to be transmitted
+ * @param [in] data             Pointer to the buffer to be received
+ * @param [in] data_length      Buffer size to be received
+ *
+ * @returns Operation status
+ */
+sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command, const uint16_t command_length,
+                                     uint8_t* data, const uint16_t data_length );
+
+/**
+ * Reset the radio
+ *
+ * @remark Shall be implemented by the user
+ *
+ * @param [in] context Radio implementation parameters
+ *
+ * @returns Operation status
+ */
+sx126x_hal_status_t sx126x_hal_reset( const void* context );
+
+/**
+ * Wake the radio up.
+ *
+ * @remark Shall be implemented by the user
+ *
+ * @param [in] context Radio implementation parameters
+ *
+ * @returns Operation status
+ */
+sx126x_hal_status_t sx126x_hal_wakeup( const void* context );
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif  // SX126X_HAL_H
 
 /* --- EOF ------------------------------------------------------------------ */

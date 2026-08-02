@@ -1,8 +1,9 @@
 /*!
- * @file      sx126x_driver_version.c
+ * @file      lr_fhss_v1_base_types_str.h
  *
- * @brief     Placeholder to keep the version of SX126X driver.
+ * @brief     Printer helper functions for LRFHSS base types
  *
+ * @copyright
  * The Clear BSD License
  * Copyright Semtech Corporation 2023. All rights reserved.
  *
@@ -32,51 +33,17 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-/*
- * -----------------------------------------------------------------------------
- * --- DEPENDENCIES ------------------------------------------------------------
- */
-
-#include "sx126x_driver_version.h"
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE MACROS-----------------------------------------------------------
- */
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE CONSTANTS -------------------------------------------------------
- */
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE TYPES -----------------------------------------------------------
- */
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE VARIABLES -------------------------------------------------------
- */
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE FUNCTIONS DECLARATION -------------------------------------------
- */
-
-/*
- * -----------------------------------------------------------------------------
- * --- PUBLIC FUNCTIONS DEFINITION ---------------------------------------------
- */
-
-const char* sx126x_driver_version_get_version_string( void )
-{
-    return ( const char* ) SX126X_DRIVER_VERSION;
+#ifndef LR_FHSS_V1_BASE_TYPES_STR_H
+#define LR_FHSS_V1_BASE_TYPES_STR_H
+#include "lr_fhss_v1_base_types.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+const char* lr_fhss_v1_modulation_type_to_str( const lr_fhss_v1_modulation_type_t value );
+const char* lr_fhss_v1_cr_to_str( const lr_fhss_v1_cr_t value );
+const char* lr_fhss_v1_grid_to_str( const lr_fhss_v1_grid_t value );
+const char* lr_fhss_v1_bw_to_str( const lr_fhss_v1_bw_t value );
+#ifdef __cplusplus
 }
-
-/*
- * -----------------------------------------------------------------------------
- * --- PRIVATE FUNCTIONS DEFINITION --------------------------------------------
- */
-
-/* --- EOF ------------------------------------------------------------------ */
+#endif
+#endif  // LR_FHSS_V1_BASE_TYPES_STR_H
