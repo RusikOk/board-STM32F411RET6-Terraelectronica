@@ -53,6 +53,14 @@ references:<br>
 <a href="https://habr.com/ru/articles/112733/">Как устроен AES</a><br>
 <a href="https://github.com/kokke/tiny-AES-c">Tiny AES in C</a><br>
 
+## 9_LoRaPing
+
+<br>
+references:<br>
+<a href="https://www.semtech.com/products/wireless-rf/lora-connect/sx1262#resources">SX1262 Long Range Low Power LoRa Transceiver +22dBm</a><br>
+<a href="https://github.com/Lora-net/sx126x_driver/tree/v2.5.0">SX126X driver</a><br>
+<a href="https://github.com/Lora-net/SWSD003/tree/v2.4.0">SWSD003 - Code examples for SX126x and LR11XX</a><br>
+
 <!-- h2></h2>
 <img src="" alt="">
 <img src="" alt="" !-->

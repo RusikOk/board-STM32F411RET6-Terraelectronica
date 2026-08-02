@@ -120,7 +120,7 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 	LOG_START();
-	printf("\r\n (c) RusikOk %s %s \r\n", __DATE__, __TIME__);	 // приветствие
+	printf("\r\n (c) RusikOk %s %s \r\n", __DATE__, __TIME__); // приветствие
 	
   /* USER CODE END 2 */
 

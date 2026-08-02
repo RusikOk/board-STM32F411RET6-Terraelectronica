@@ -91,8 +91,7 @@ typedef enum sx126x_hal_status_e
  *
  * @returns Operation status
  */
-sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* command, const uint16_t command_length,
-                                      const uint8_t* data, const uint16_t data_length );
+sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* command, const uint16_t command_length, const uint8_t* data, const uint16_t data_length );
 
 /**
  * Radio data transfer - read
@@ -107,8 +106,7 @@ sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* comman
  *
  * @returns Operation status
  */
-sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command, const uint16_t command_length,
-                                     uint8_t* data, const uint16_t data_length );
+sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command, const uint16_t command_length, uint8_t* data, const uint16_t data_length );
 
 /**
  * Reset the radio

@@ -1517,6 +1517,54 @@
                     <name>$PROJ_DIR$\..\RTT\SEGGER_RTT_printf.c</name>
                 </file>
             </group>
+            <group>
+                <name>SubGHz_Phy</name>
+                <group>
+                    <name>radio_driver</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\lr_fhss_mac.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\lr_fhss_mac.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\lr_fhss_v1_base_types.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_bpsk.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_bpsk.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_driver_version.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_driver_version.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_hal.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_lr_fhss.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_lr_fhss.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_regs.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_status.h</name>
+                    </file>
+                </group>
+            </group>
         </group>
     </group>
     <group>
