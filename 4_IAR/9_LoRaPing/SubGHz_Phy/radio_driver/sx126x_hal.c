@@ -41,11 +41,11 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include "sx126x_hal.h"
-#include "sx126x_hal_context.h"
+//#include "sx126x_hal_context.h"
 #include "sx126x_hal.h"
-#include "smtc_hal_mcu_spi.h"
-#include "smtc_hal_mcu_gpio.h"
-#include "smtc_hal_mcu.h"
+//#include "smtc_hal_mcu_spi.h"
+//#include "smtc_hal_mcu_gpio.h"
+//#include "smtc_hal_mcu.h"
 
 /*
  * -----------------------------------------------------------------------------
@@ -79,52 +79,38 @@ void sx126x_hal_wait_on_busy( const void* radio );
 
 sx126x_hal_status_t sx126x_hal_reset( const void* context )
 {
-    const sx126x_hal_context_t* sx126x_context = ( const sx126x_hal_context_t* ) context;
-
-    smtc_hal_mcu_gpio_set_state( sx126x_context->reset.inst, SMTC_HAL_MCU_GPIO_STATE_LOW );
-    smtc_hal_mcu_wait_ms( ( const uint32_t ) 1U );
-    smtc_hal_mcu_gpio_set_state( sx126x_context->reset.inst, SMTC_HAL_MCU_GPIO_STATE_HIGH );
-
-    return SX126X_HAL_STATUS_OK;
+	HAL_GPIO_WritePin(SX_NRST_GPIO_Port, SX_NRST_Pin, GPIO_PIN_RESET);
+	HAL_Delay(1);
+	HAL_GPIO_WritePin(SX_NRST_GPIO_Port, SX_NRST_Pin, GPIO_PIN_SET);
+	return SX126X_HAL_STATUS_OK;
 }
 
 sx126x_hal_status_t sx126x_hal_wakeup( const void* context )
 {
-    const sx126x_hal_context_t* sx126x_context = ( const sx126x_hal_context_t* ) context;
-
-    smtc_hal_mcu_gpio_set_state( sx126x_context->nss.inst, SMTC_HAL_MCU_GPIO_STATE_LOW );
-    smtc_hal_mcu_wait_ms( ( const uint32_t ) 1U );
-    smtc_hal_mcu_gpio_set_state( sx126x_context->nss.inst, SMTC_HAL_MCU_GPIO_STATE_HIGH );
-
-    return SX126X_HAL_STATUS_OK;
+	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_RESET);
+	HAL_Delay(1);
+	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_SET);
+	return SX126X_HAL_STATUS_OK;
 }
 
 sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* command, const uint16_t command_length, const uint8_t* data, const uint16_t data_length )
 {
-    const sx126x_hal_context_t* sx126x_context = ( const sx126x_hal_context_t* ) context;
-
-    sx126x_hal_wait_on_busy( sx126x_context );
-
-    smtc_hal_mcu_gpio_set_state( sx126x_context->nss.inst, SMTC_HAL_MCU_GPIO_STATE_LOW );
-    smtc_hal_mcu_spi_rw_buffer( sx126x_context->spi.inst, command, NULL, command_length );
-    smtc_hal_mcu_spi_rw_buffer( sx126x_context->spi.inst, data, NULL, data_length );
-    smtc_hal_mcu_gpio_set_state( sx126x_context->nss.inst, SMTC_HAL_MCU_GPIO_STATE_HIGH );
-
-    return SX126X_HAL_STATUS_OK;
+	sx126x_hal_wait_on_busy(context);
+	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi2, command, command_length, 10);
+	HAL_SPI_Transmit(&hspi2, data, data_length, 10);
+	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_SET);
+	return SX126X_HAL_STATUS_OK;
 }
 
 sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command, const uint16_t command_length, uint8_t* data, const uint16_t data_length )
 {
-    const sx126x_hal_context_t* sx126x_context = ( const sx126x_hal_context_t* ) context;
-
-    sx126x_hal_wait_on_busy( sx126x_context );
-
-    smtc_hal_mcu_gpio_set_state( sx126x_context->nss.inst, SMTC_HAL_MCU_GPIO_STATE_LOW );
-    smtc_hal_mcu_spi_rw_buffer( sx126x_context->spi.inst, command, NULL, command_length );
-    smtc_hal_mcu_spi_rw_buffer( sx126x_context->spi.inst, NULL, data, data_length );
-    smtc_hal_mcu_gpio_set_state( sx126x_context->nss.inst, SMTC_HAL_MCU_GPIO_STATE_HIGH );
-
-    return SX126X_HAL_STATUS_OK;
+	sx126x_hal_wait_on_busy(context);
+	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi2, command, command_length, 10);
+	HAL_SPI_Receive(&hspi2, data, data_length, 10);
+	HAL_GPIO_WritePin(SX_NSS_GPIO_Port, SX_NSS_Pin, GPIO_PIN_SET);
+	return SX126X_HAL_STATUS_OK;
 }
 
 /*
@@ -134,13 +120,11 @@ sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command
 
 void sx126x_hal_wait_on_busy( const void* radio )
 {
-    const sx126x_hal_context_t* sx126x_context = ( const sx126x_hal_context_t* ) radio;
-    smtc_hal_mcu_gpio_state_t   gpio_state;
-
-    do
-    {
-        smtc_hal_mcu_gpio_get_state( sx126x_context->busy.inst, &gpio_state );
-    } while( gpio_state == SMTC_HAL_MCU_GPIO_STATE_HIGH );
+	GPIO_PinState gpio_state;
+	do
+	{
+		gpio_state = HAL_GPIO_ReadPin(SX_BUSY_GPIO_Port, SX_BUSY_Pin);
+	} while(GPIO_PIN_SET == gpio_state);
 }
 
 /* --- EOF ------------------------------------------------------------------ */

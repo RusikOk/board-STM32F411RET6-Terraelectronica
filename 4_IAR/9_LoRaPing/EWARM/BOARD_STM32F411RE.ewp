@@ -361,6 +361,8 @@
                     <state>$PROJ_DIR$\..\RTT</state>
                     <state>$PROJ_DIR$\..\SubGHz_Phy</state>
                     <state>$PROJ_DIR$\..\SubGHz_Phy\radio_driver</state>
+                    <state>$PROJ_DIR$\..\SubGHz_Phy\app</state>
+                    <state>$PROJ_DIR$\..\SubGHz_Phy\common</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -798,7 +800,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\config\linker\ST\stm32f411xE.icf</state>
+                    <state>$TOOLKIT_DIR$/config/linker/ST/stm32f411xE.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1182,6 +1184,12 @@
             <group>
                 <name>SubGHz_Phy</name>
                 <group>
+                    <name>app</name>
+                </group>
+                <group>
+                    <name>common</name>
+                </group>
+                <group>
                     <name>radio_driver</name>
                     <file>
                         <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\lr_fhss_mac.c</name>
@@ -1209,6 +1217,9 @@
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_driver_version.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_hal.c</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\SubGHz_Phy\radio_driver\sx126x_hal.h</name>

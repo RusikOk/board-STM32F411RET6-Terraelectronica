@@ -39,7 +39,7 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+extern SPI_HandleTypeDef hspi2;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/

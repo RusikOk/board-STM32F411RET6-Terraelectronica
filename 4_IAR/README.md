@@ -61,9 +61,5 @@ references:<br>
 <a href="https://github.com/Lora-net/sx126x_driver/tree/v2.5.0">SX126X driver</a><br>
 <a href="https://github.com/Lora-net/SWSD003/tree/v2.4.0">SWSD003 - Code examples for SX126x and LR11XX</a><br>
 
-<!-- h2></h2>
-<img src="" alt="">
-<img src="" alt="" !-->
-
 ## STM32F103RET6
 заготовка под новый проэкт с настроенной стандартной периферией платы под МК STM32F103. <b>не актуально !!!</b>
